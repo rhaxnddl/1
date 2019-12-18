@@ -3,16 +3,18 @@ package a_begin;
 public class score {
  public static void main(String[] args) {
 	  /* 
-	   * kor=±¹¾î¼ºÀû, eng=¿µ¾î¼ºÀû
-	   * total=¼ºÀûÀÇ ÇÕ°è
+	   * kor=êµ­ì–´ì„±ì , eng=ì˜ì–´ì„±ì 
+	   * total=ì„±ì ì˜ í•©ê³„
 	   */
 	 int kor = 90;//int kor=90, eng=90;//
 	 int eng = 90;
-	 int total = kor+eng;
+	 int mat = 95;
+	 int total = kor+eng+mat;
 	 	 
-	 System.out.println("±¹¾î : " + kor);
-	 System.out.println("¿µ¾î : " + eng);
-	 System.out.println("ÇÕ°è : " + total); //System.out.println("ÇÕ°è : " + (kor+eng));//
+	 System.out.println("êµ­ì–´ : " + kor);
+	 System.out.println("ì˜ì–´ : " + eng);
+	 System.out.println("ã……ã…œã…ã…ã„± : "+ mat);
+	 System.out.println("í•©ê³„ : " + total); //System.out.println("í•©ê³„ : " + (kor+eng));//
 	 
  }
 }
