@@ -7,7 +7,10 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
 import java.awt.Font;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Objects;
 
 import javax.swing.JScrollPane;
@@ -54,24 +57,29 @@ public class BoardSearch extends JInternalFrame {
 	}
 	
 	public void BoardList() {
-		BoardVo temp = null;
-		int result = 0;
-		for(int i = 0; i<BoardMain.count-1; i++) {
-			for(int j=(i+1); j<BoardMain.count; j++) {
-				BoardVo s1 = BoardMain.data[i];
-				BoardVo s2 = BoardMain.data[j];
-				result = Objects.compare(s1, s2, new BoardComparator('n'));
-				if(result<0) {
-					temp = BoardMain.data[i];
-					BoardMain.data[i] = BoardMain.data[j];
-					BoardMain.data[j] = temp;
-				} // if
-			} // j
-		} // i
+//		BoardVo temp = null;
+//		int result = 0;
+//		for(int i = 0; i<BoardMain.count-1; i++) {
+//			for(int j=(i+1); j<BoardMain.count; j++) {
+//				BoardVo s1 = BoardMain.data[i];
+//				BoardVo s2 = BoardMain.data[j];
+//				result = Objects.compare(s1, s2, new BoardComparator('n'));
+//				if(result<0) {
+//					temp = BoardMain.data[i];
+//					BoardMain.data[i] = BoardMain.data[j];
+//					BoardMain.data[j] = temp;
+//				} // if
+//			} // j
+//		} // i
+//		
+	Collections.sort(Arrays.asList(BoardMain.data),new BoardComparator());
+		
 		textArea.setText("");
 		for(int i=0; i<BoardMain.count;i++) {
 			textArea.append(BoardMain.data[i].toString() + "\n");
 		}
+		
+		
 	}
 	private JLabel getLblNewLabel() {
 		if (lblNewLabel == null) {
