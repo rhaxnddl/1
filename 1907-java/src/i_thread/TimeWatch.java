@@ -85,11 +85,12 @@ public class TimeWatch extends JFrame {
 	private JLabel getLblNewLabel_1() {
 		if (lblNewLabel_1 == null) {
 			lblNewLabel_1 = new JLabel("\uC2A4\uD1B1\uC6CC\uCE58");
+			lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 			lblNewLabel_1.setOpaque(true);
 			lblNewLabel_1.setBackground(new Color(255, 215, 0));
 			lblNewLabel_1.setForeground(new Color(255, 255, 255));
 			lblNewLabel_1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
-			lblNewLabel_1.setBounds(166, 112, 85, 27);
+			lblNewLabel_1.setBounds(154, 112, 108, 27);
 		}
 		return lblNewLabel_1;
 	}
@@ -104,6 +105,9 @@ public class TimeWatch extends JFrame {
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("START");
+			btnNewButton.setForeground(new Color(255, 255, 255));
+			btnNewButton.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
+			btnNewButton.setBackground(new Color(255, 215, 0));
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					StopWatchThread st = (StopWatchThread)panel;
@@ -120,6 +124,9 @@ public class TimeWatch extends JFrame {
 	private JButton getBtnNewButton_1() {
 		if (btnNewButton_1 == null) {
 			btnNewButton_1 = new JButton("STOP");
+			btnNewButton_1.setForeground(new Color(255, 255, 255));
+			btnNewButton_1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
+			btnNewButton_1.setBackground(new Color(255, 215, 0));
 			btnNewButton_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					StopWatchThread st = (StopWatchThread)panel;
@@ -134,7 +141,8 @@ public class TimeWatch extends JFrame {
 	private JLabel getLabelTime() {
 		if (labelTime == null) {
 			labelTime = new JLabel("");
-			labelTime.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 25));
+			labelTime.setBackground(new Color(255, 239, 213));
+			labelTime.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 30));
 			labelTime.setOpaque(true);
 			labelTime.setForeground(new Color(255, 215, 0));
 			labelTime.setBounds(12, 43, 410, 59);

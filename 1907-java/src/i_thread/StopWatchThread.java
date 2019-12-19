@@ -37,7 +37,7 @@ public class StopWatchThread extends JPanel implements Runnable{
 	private JLabel getLblNewLabel() {
 		if (timeLabel == null) {
 			timeLabel = new JLabel("stop watch");
-			timeLabel.setForeground(Color.WHITE);
+			timeLabel.setForeground(new Color(255, 215, 0));
 			timeLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 30));
 		}
 		
