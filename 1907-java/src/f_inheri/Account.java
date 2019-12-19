@@ -1,7 +1,7 @@
 package f_inheri;
 
 public class Account {
-	// Value object - °ª¸¸ ÀúÀåµÇ¾îÀÖÀ½.
+	// Value object - ê°’ë§Œ ì €ì¥ë˜ì–´ìˆìŒ.
 	private String mName;
 	private String sNo;
 	private long amount;
