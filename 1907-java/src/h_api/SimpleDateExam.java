@@ -50,12 +50,12 @@ public class SimpleDateExam extends JInternalFrame {
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Date now = new Date();
-					SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd (E)¿äÀÏ hh:mm:ss");
+					SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd (E)ìš”ì¼ hh:mm:ss");
 				
 					status.setText(sdf.format(now));
 				}
 			});
-			btnNewButton.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
+			btnNewButton.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 15));
 			btnNewButton.setBounds(12, 10, 117, 23);
 		}
 		return btnNewButton;
@@ -63,7 +63,7 @@ public class SimpleDateExam extends JInternalFrame {
 	private JLabel getStatus() {
 		if (status == null) {
 			status = new JLabel("");
-			status.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
+			status.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 20));
 			status.setBounds(12, 43, 410, 78);
 		}
 		return status;
