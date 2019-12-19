@@ -16,7 +16,6 @@ public class Operator {
 		String r = (n%2==0)? "짝수" : "홀수";//System.out.println("짝수"); : System.out.println("홀수");
 		System.out.println( n + "==>" + r);
 		
-		
 		/*증감 연산자
 		전치/후치*/
 		int a = 10;
@@ -41,9 +40,7 @@ public class Operator {
 		System.out.println(name==irum2); //메서드가 따로 만들어졌기 때문에 false
 		
 		System.out.println(name.equals(irum));
-		System.out.println(name.equals(irum2));
-		
-		
+		System.out.println(name.equals(irum2));		
 	}
  public static void main(String[] args) {
 	 new Operator(); //new뒤에는 항상 생성자를 작성, 클래스명 아님

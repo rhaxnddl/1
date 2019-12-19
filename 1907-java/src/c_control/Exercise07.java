@@ -10,8 +10,7 @@ public class Exercise07 {
       int money = 0;  
       
       Scanner scanner = new Scanner(System.in);
-      
-      
+            
       while(run) {
     	  System.out.println("______________________________________");
     	  System.out.println("1. 예금 | 2. 출금 | 3. 잔고 | 4. 종료 ");
@@ -38,8 +37,7 @@ public class Exercise07 {
         	   run = false;
         	   System.out.println("프로그램 종료");
            }  
-      } // end of while 
-        
+      } // end of while         
     }
     public static void main(String[] args) {
     	new Exercise07();

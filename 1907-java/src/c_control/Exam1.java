@@ -35,9 +35,7 @@ public class Exam1 {
 	   msg +="\n평균 : " + avg;
 	   msg +="\n학점 : " + grade;
 	 
-	 System.out.println(msg);
-	   
-	 
+	 System.out.println(msg);	   	 
 	 System.out.println("------------------------------------");
 	 System.out.println("성적 처리 결과");
 	 System.out.println("------------------------------------");
