@@ -1,4 +1,4 @@
-// 2019.12.11 ÀÌÇö°æ
+// 2019.12.11
 package f_inheri;
 
 public class SuperAirPlaneExam {
