@@ -20,11 +20,11 @@ public class TimeWatch extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblNewLabel;
-	private static JTextField textField;
 	private JLabel lblNewLabel_1;
 	private JPanel panel;
 	private JButton btnNewButton;
 	private JButton btnNewButton_1;
+	private JLabel labelTime;
 
 	/**
 	 * Launch the application.
@@ -41,18 +41,12 @@ public class TimeWatch extends JFrame {
 			}
 			
 		});
-		DateTimeThread dateTimeThread = new DateTimeThread();
-		dateTimeThread.start();
 		
 	}
 
 	/**
 	 * Create the frame.
 	 */
-	TimeWatch(String txt){				
-		this.textField.setText(txt);				
-	}
-	
 	
 	
 	public TimeWatch() {
@@ -64,11 +58,15 @@ public class TimeWatch extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		contentPane.add(getLblNewLabel());
-		contentPane.add(getTextField());
 		contentPane.add(getLblNewLabel_1());
 		contentPane.add(getPanel());
 		contentPane.add(getBtnNewButton());
 		contentPane.add(getBtnNewButton_1());
+		contentPane.add(getLabelTime());
+		
+		DateTimeThread dtt = new DateTimeThread(labelTime);
+		dtt.setDaemon(true);
+		dtt.start();
 		
 	}
 
@@ -83,17 +81,6 @@ public class TimeWatch extends JFrame {
 			lblNewLabel.setBounds(166, 10, 85, 27);
 		}
 		return lblNewLabel;
-	}
-	private JTextField getTextField() {
-		if (textField == null) {
-			textField = new JTextField();
-			textField.setForeground(new Color(255, 255, 255));
-			textField.setBackground(new Color(255, 235, 205));
-			textField.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 35));
-			textField.setBounds(12, 40, 410, 62);
-			textField.setColumns(10);	
-		}
-		return textField;
 	}
 	private JLabel getLblNewLabel_1() {
 		if (lblNewLabel_1 == null) {
@@ -119,7 +106,11 @@ public class TimeWatch extends JFrame {
 			btnNewButton = new JButton("START");
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+					StopWatchThread st = (StopWatchThread)panel;
+					st.stop = false;
+					Thread t = new Thread(st);
+					t.setDaemon(true);
+					t.start();
 				}
 			});
 			btnNewButton.setBounds(94, 217, 97, 23);
@@ -131,12 +122,23 @@ public class TimeWatch extends JFrame {
 			btnNewButton_1 = new JButton("STOP");
 			btnNewButton_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+					StopWatchThread st = (StopWatchThread)panel;
+					st.stop = true;					
 				}
 
 			});
 			btnNewButton_1.setBounds(235, 217, 97, 23);
 		}
 		return btnNewButton_1;
+	}
+	private JLabel getLabelTime() {
+		if (labelTime == null) {
+			labelTime = new JLabel("");
+			labelTime.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 25));
+			labelTime.setOpaque(true);
+			labelTime.setForeground(new Color(255, 215, 0));
+			labelTime.setBounds(12, 43, 410, 59);
+		}
+		return labelTime;
 	}
 }

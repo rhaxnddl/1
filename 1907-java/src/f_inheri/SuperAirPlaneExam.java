@@ -1,4 +1,4 @@
-// 2019.12.11 이현경
+// 2019.12.19 이현경
 package f_inheri;
 
 public class SuperAirPlaneExam {

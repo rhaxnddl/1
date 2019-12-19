@@ -1,3 +1,4 @@
+// 2019.12.19
 package f_inheri;
 
 public class Bank {

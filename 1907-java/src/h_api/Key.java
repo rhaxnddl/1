@@ -1,5 +1,5 @@
 // 2019.12.12 이현경
-// HashCode
+// HashCode 연습
 package h_api;
 
 public class Key {
