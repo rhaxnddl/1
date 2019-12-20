@@ -1,6 +1,7 @@
 /*2019.12.02
  * ¿¹Á¦ 2
- * */
+*/
+
 package c_control;
 
 public class Exam2 {
