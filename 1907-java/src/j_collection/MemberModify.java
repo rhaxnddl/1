@@ -3,6 +3,7 @@ package j_collection;
 
 import java.awt.EventQueue;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -102,8 +103,7 @@ public class MemberModify extends JInternalFrame {
 		}
 	}
 	
-	public void modify() { // 수정 버튼
-		
+	public void modify() { // 수정 버튼	
 		MemberVo vo = list.get(index);
 
 		vo.setPwd(pwd.getText());
@@ -114,10 +114,23 @@ public class MemberModify extends JInternalFrame {
 	}
 	
 	public void delete() { // 삭제 버튼
-		
+		if(index >=0) {
 		list.remove(index);
 		
+		status.setBackground(Color.BLUE);
 		status.setText("자료가 삭제되었습니다.");
+		
+		index = -1;
+		pwd.setText("");
+		mName.setText("");
+		phone.setText("");
+		
+		mId.requestFocus();
+		mId.selectAll();
+		} else {
+			status.setBackground(Color.RED);
+			status.setText("먼저 검색해 주세요");
+		}
 	}
 	
 	public MemberModify(List<MemberVo> list) {
@@ -184,7 +197,7 @@ public class MemberModify extends JInternalFrame {
 	private JTextField getPwd() {
 		if (pwd == null) {
 			pwd = new JTextField();
-			pwd.setBounds(86, 49, 105, 21);
+			pwd.setBounds(86, 53, 105, 21);
 			pwd.setColumns(10);
 		}
 		return pwd;

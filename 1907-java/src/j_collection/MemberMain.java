@@ -12,15 +12,26 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.SystemColor;
 
 public class MemberMain extends JFrame {
 	
 	List<MemberVo> list = new ArrayList<MemberVo>(); // size는 10개, 갯수가 11개가 될때 20개로 늘어남 
+
+	// Product에 관련된 생성자
+	Set<ProductVo> piList = new HashSet<ProductVo>(); // 입고 리스트
+	Set<ProductVo> peList = new HashSet<ProductVo>(); // 출고 리스트
+	static int iSerial = 1; // 입고의 순번
+	static int eSerial = 1; // 출고의 순번
 	
 	private JDesktopPane contentPane;
 	private JMenuBar menuBar;
@@ -28,6 +39,11 @@ public class MemberMain extends JFrame {
 	private JMenuItem mntmNewMenuItem;
 	private JMenuItem mntmNewMenuItem_1;
 	private JMenuItem mntmNewMenuItem_2;
+	private JMenu mnNewMenu_1;
+	private JMenuItem mntmNewMenuItem_3;
+	private JMenuItem mntmNewMenuItem_4;
+	private JMenuItem mntmNewMenuItem_5;
+	private JMenuItem mntmNewMenuItem_6;
 
 	/**
 	 * Launch the application.
@@ -55,7 +71,7 @@ public class MemberMain extends JFrame {
 		setBounds(100, 100, 596, 434);
 		setJMenuBar(getMenuBar_1());
 		contentPane = new JDesktopPane();
-		contentPane.setBackground(new Color(173, 216, 230));
+		contentPane.setBackground(new Color(248, 248, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -65,6 +81,17 @@ public class MemberMain extends JFrame {
 			MemberVo vo = new MemberVo("no"+i, "pwd"+i, "name"+i, "010-1111-"+i);
 			list.add(vo);
 		}
+		
+		// 입고 (iSerial), 출고 (eSerial) sample data
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		for(int i=0; i<100; i++) {
+			String tempSerial = sdf.format(new Date()) + "-" + MemberMain.iSerial;
+			ProductVo vo = new ProductVo(tempSerial, "pCode" + i, "pName" + i, 3000, new Date());
+			piList.add(vo);
+			peList.add(vo);
+			MemberMain.iSerial++;
+			MemberMain.eSerial++;
+		}
 	}
 
 	private JMenuBar getMenuBar_1() {
@@ -72,6 +99,7 @@ public class MemberMain extends JFrame {
 			menuBar = new JMenuBar();
 			menuBar.setBackground(new Color(100, 149, 237));
 			menuBar.add(getMnNewMenu());
+			menuBar.add(getMnNewMenu_1());
 		}
 		return menuBar;
 	}
@@ -131,5 +159,78 @@ public class MemberMain extends JFrame {
 			});
 		}
 		return mntmNewMenuItem_2;
+	}
+	private JMenu getMnNewMenu_1() {
+		if (mnNewMenu_1 == null) {
+			mnNewMenu_1 = new JMenu("\uC790\uC7AC \uAD00\uB9AC");
+			mnNewMenu_1.setBackground(new Color(100, 149, 237));
+			mnNewMenu_1.setForeground(Color.WHITE);
+			mnNewMenu_1.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+			mnNewMenu_1.add(getMntmNewMenuItem_3());
+			mnNewMenu_1.add(getMntmNewMenuItem_4());
+			mnNewMenu_1.add(getMntmNewMenuItem_5());
+			mnNewMenu_1.add(getMntmNewMenuItem_6());
+		}
+		return mnNewMenu_1;
+	}
+	private JMenuItem getMntmNewMenuItem_3() {
+		if (mntmNewMenuItem_3 == null) {
+			mntmNewMenuItem_3 = new JMenuItem("\uC785\uACE0");
+			mntmNewMenuItem_3.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					ProductInput panel = new ProductInput(piList);
+					contentPane.add(panel);
+				}
+			});
+			mntmNewMenuItem_3.setBackground(new Color(100, 149, 237));
+			mntmNewMenuItem_3.setForeground(Color.WHITE);
+			mntmNewMenuItem_3.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		}
+		return mntmNewMenuItem_3;
+	}
+	private JMenuItem getMntmNewMenuItem_4() {
+		if (mntmNewMenuItem_4 == null) {
+			mntmNewMenuItem_4 = new JMenuItem("\uCD9C\uACE0");
+			mntmNewMenuItem_4.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					ProductOutput panel = new ProductOutput(peList);
+					contentPane.add(panel);
+				}
+			});
+			mntmNewMenuItem_4.setBackground(new Color(100, 149, 237));
+			mntmNewMenuItem_4.setForeground(Color.WHITE);
+			mntmNewMenuItem_4.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		}
+		return mntmNewMenuItem_4;
+	}
+	private JMenuItem getMntmNewMenuItem_5() {
+		if (mntmNewMenuItem_5 == null) {
+			mntmNewMenuItem_5 = new JMenuItem("\uC870\uD68C");
+			mntmNewMenuItem_5.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					ProductSearch panel = new ProductSearch(peList, piList);
+					contentPane.add(panel);
+				}
+			});
+			mntmNewMenuItem_5.setBackground(new Color(100, 149, 237));
+			mntmNewMenuItem_5.setForeground(Color.WHITE);
+			mntmNewMenuItem_5.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		}
+		return mntmNewMenuItem_5;
+	}
+	private JMenuItem getMntmNewMenuItem_6() {
+		if (mntmNewMenuItem_6 == null) {
+			mntmNewMenuItem_6 = new JMenuItem("\uC218\uC815&\uC0AD\uC81C");
+			mntmNewMenuItem_6.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					ProductModify panel = new ProductModify(piList, peList);
+					contentPane.add(panel);
+				}
+			});
+			mntmNewMenuItem_6.setForeground(new Color(255, 255, 255));
+			mntmNewMenuItem_6.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+			mntmNewMenuItem_6.setBackground(new Color(100, 149, 237));
+		}
+		return mntmNewMenuItem_6;
 	}
 }
