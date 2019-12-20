@@ -1,3 +1,4 @@
+//2019.12.19
 package j_collection;
 
 import java.awt.EventQueue;
@@ -108,6 +109,8 @@ public class MemberModify extends JInternalFrame {
 		vo.setPwd(pwd.getText());
 		vo.setmName(mName.getText());
 		vo.setPhone(phone.getText());
+		
+		
 				
 		status.setText("자료가 수정되었습니다.");
 	}
