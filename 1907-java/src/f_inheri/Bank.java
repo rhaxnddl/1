@@ -3,7 +3,7 @@ package f_inheri;
 
 public class Bank {
 	static Account [] ac;
-	static int count; // °èÁÂ ¼ö , °í°´ ¼ö 
+	static int count; // ê³„ì¢Œ ìˆ˜ , ê³ ê° ìˆ˜ 
 	
 	static{
 		ac = new Account[100];

@@ -13,6 +13,6 @@ public class JoinExam {
 			st.join();
 		} catch(InterruptedException e) { }
 		
-		System.out.println("1~100ÀÇ ÇÕ°è : " + st.sum);
+		System.out.println("1~100ì˜ í•©ê³„ : " + st.sum);
 	}
 }

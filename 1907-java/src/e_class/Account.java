@@ -2,15 +2,15 @@
 package e_class;
 
 public class Account {
-    void deposit(int amt) { // ÀÔ±Ý
+    void deposit(int amt) { // ìž…ê¸ˆ
     	Bank.amount += amt;
     	prn();
     }
-    void withdraw(int amt) { // Ãâ±Ý
+    void withdraw(int amt) { // ì¶œê¸ˆ
     	Bank.amount -= amt;
     	prn();
     }
     void prn() {
-    	System.out.println("ÀÜ¾× : " + Bank.amount);
+    	System.out.println(" : " + Bank.amount);
     }
 }

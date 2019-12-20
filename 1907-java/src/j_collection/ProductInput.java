@@ -64,7 +64,23 @@ public class ProductInput extends JInternalFrame {
 	public ProductInput(Set<ProductVo> pi) {
 		this();
 		this.piList = pi;
+		}
+		
+	public void input() {
+		try {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");
+		String serial = sdf.format(new Date()) + "-" + MemberMain.iSerial;
+		String pC = pCode.getText();
+		String pN = pName.getText();
+		int e = Integer.parseInt(ea.getText());
+		Date n = sdf.parse(nal.getText());
+		
+		ProductVo vo = new ProductVo(serial, pC, pN, e, n);
+		piList.add(vo);
+		MemberMain.iSerial++;
+		}catch(Exception ex) {}
 	}
+		
 	private JLabel getLblNewLabel() {
 		if (lblNewLabel == null) {
 			lblNewLabel = new JLabel("\uC81C\uD488 \uCF54\uB4DC");
@@ -136,7 +152,7 @@ public class ProductInput extends JInternalFrame {
 			btnNewButton = new JButton("\uC785\uACE0");
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+					input();
 				}
 			});
 			btnNewButton.setBounds(76, 123, 97, 23);
