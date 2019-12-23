@@ -24,7 +24,7 @@ public class ProductSearch extends JInternalFrame {
 	Set<ProductVo> piList;
 	Set<ProductVo> peList;
 	
-	ButtonGroup group = new ButtonGroup();
+	ButtonGroup group = new ButtonGroup(); // 그롭을 따로 만들면 따로 움직인다. 같이 움직이기 위해서 그룹을 만듬
 	
 	
 	private JPanel panel;
@@ -64,7 +64,7 @@ public class ProductSearch extends JInternalFrame {
 		getContentPane().add(getScrollPane(), BorderLayout.CENTER);
 
 	}
-	public ProductSearch(Set<ProductVo> pi, Set<ProductVo>pe) {
+	public ProductSearch(Set<ProductVo> pi, Set<ProductVo> pe) {
 		this();
 		this.piList = pi;
 		this.peList = pe;		
@@ -72,7 +72,7 @@ public class ProductSearch extends JInternalFrame {
 	public void search() {
 		Set<ProductVo> list = null;
 		
-		// 검색어 (serial, 제품코드, 제품명)
+		// 검색어 (serial, 제품코드, 제품명) // 
 		ProductVo find = new ProductVo();
 		find.setSerial(textField.getText());
 		find.setpCode(textField.getText());

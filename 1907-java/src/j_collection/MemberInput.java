@@ -47,8 +47,8 @@ public class MemberInput extends JInternalFrame {
 	 */
 	public MemberInput() {
 		super("회원 입력", false, true, true, true);
-		getContentPane().setBackground(new Color(173, 216, 230));
 		setVisible(true);
+		getContentPane().setBackground(new Color(173, 216, 230));
 		setBounds(30, 500, 323, 308);
 		getContentPane().setLayout(null);
 		getContentPane().add(getLblNewLabel());

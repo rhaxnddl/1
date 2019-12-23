@@ -9,7 +9,7 @@ public class B {
 	  A a = new A();
 	  a.f1 = 1;    // (O) public type
 	  a.f2 = 1;    // (O) default type(package type)
-	  a.f1 f3 = 1; // (X) private type
+	  a.f3 = 1;   // (X) private type
 	  // 필요한 것만 외부로 보여주는 것 - 캡슐화
   }
 }

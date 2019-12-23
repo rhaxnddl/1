@@ -3,13 +3,13 @@ package a_begin;
 
 public class Score2 {
  public static void main(String[] args) {
-	 String name = "í™ê¸¸ë™";
+	 String name = "È«±æµ¿";
 	 double score = 100.0;  //float score = 100.0f;//
 	 char grade = 'A';  //String grade = "A";//
 	 
-	 System.out.println("ì´ë¦„ : " + name);
-	 System.out.println("ì ìˆ˜ : " + score);
-	 System.out.println("í•™ì  : " + grade);
+	 System.out.println("ÀÌ¸§ : " + name);
+	 System.out.println("Á¡¼ö : " + score);
+	 System.out.println("ÇĞÁ¡ : " + grade);
 	 
 	 
  }
