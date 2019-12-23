@@ -68,7 +68,7 @@ public class ScoreInput extends JInternalFrame {
 	public ScoreInput() {
 		super("성적 입력", false, true, true, true);
 		setVisible(true);
-		setBounds(100, 100, 312, 486);
+		setBounds(100, 100, 265, 486);
 		getContentPane().setLayout(null);
 		getContentPane().add(getLblNewLabel());
 		getContentPane().add(getLblNewLabel_1());
@@ -196,7 +196,7 @@ public class ScoreInput extends JInternalFrame {
 	private JTextField getKor() {
 		if (kor == null) {
 			kor = new JTextField();
-			kor.setBounds(81, 223, 57, 21);
+			kor.setBounds(81, 223, 116, 21);
 			kor.setColumns(10);
 		}
 		return kor;
@@ -204,7 +204,7 @@ public class ScoreInput extends JInternalFrame {
 	private JTextField getMat() {
 		if (mat == null) {
 			mat = new JTextField();
-			mat.setBounds(81, 254, 57, 21);
+			mat.setBounds(81, 254, 116, 21);
 			mat.setColumns(10);
 		}
 		return mat;
@@ -212,7 +212,7 @@ public class ScoreInput extends JInternalFrame {
 	private JTextField getEng() {
 		if (eng == null) {
 			eng = new JTextField();
-			eng.setBounds(81, 285, 57, 21);
+			eng.setBounds(81, 285, 116, 21);
 			eng.setColumns(10);
 		}
 		return eng;
@@ -220,7 +220,7 @@ public class ScoreInput extends JInternalFrame {
 	private JTextField getTot() {
 		if (tot == null) {
 			tot = new JTextField();
-			tot.setBounds(81, 316, 57, 21);
+			tot.setBounds(81, 316, 116, 21);
 			tot.setColumns(10);
 		}
 		return tot;
@@ -228,7 +228,7 @@ public class ScoreInput extends JInternalFrame {
 	private JTextField getAvg() {
 		if (avg == null) {
 			avg = new JTextField();
-			avg.setBounds(81, 347, 57, 21);
+			avg.setBounds(81, 347, 116, 21);
 			avg.setColumns(10);
 		}
 		return avg;
@@ -271,7 +271,7 @@ public class ScoreInput extends JInternalFrame {
 			lblNewLabel_9 = new JLabel("\uC131\uC801 \uC785\uB825");
 			lblNewLabel_9.setHorizontalAlignment(SwingConstants.CENTER);
 			lblNewLabel_9.setFont(new Font("타이포_스톰 B", Font.BOLD, 40));
-			lblNewLabel_9.setBounds(12, 10, 269, 71);
+			lblNewLabel_9.setBounds(12, 10, 230, 71);
 		}
 		return lblNewLabel_9;
 	}
@@ -283,7 +283,7 @@ public class ScoreInput extends JInternalFrame {
 			status.setOpaque(true);
 			status.setBackground(new Color(154, 205, 50));
 			status.setFont(new Font("1훈새마을운동 R", Font.BOLD, 15));
-			status.setBounds(12, 411, 269, 36);
+			status.setBounds(12, 411, 230, 36);
 		}
 		return status;
 	}
@@ -321,7 +321,7 @@ public class ScoreInput extends JInternalFrame {
 			separator_1 = new JSeparator();
 			separator_1.setOpaque(true);
 			separator_1.setBackground(new Color(154, 205, 50));
-			separator_1.setBounds(12, 91, 269, 2);
+			separator_1.setBounds(12, 91, 230, 2);
 		}
 		return separator_1;
 	}
