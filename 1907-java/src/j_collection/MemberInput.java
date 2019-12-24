@@ -13,6 +13,8 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.SystemColor;
+import javax.swing.JSeparator;
 
 public class MemberInput extends JInternalFrame {
 	List<MemberVo> list;
@@ -26,6 +28,9 @@ public class MemberInput extends JInternalFrame {
 	private JTextField mName;
 	private JTextField phone;
 	private JLabel status;
+	private JSeparator separator;
+	private JLabel lblNewLabel_4;
+	private JSeparator separator_1;
 	/**
 	 * Launch the application.
 	 */
@@ -48,8 +53,8 @@ public class MemberInput extends JInternalFrame {
 	public MemberInput() {
 		super("회원 입력", false, true, true, true);
 		setVisible(true);
-		getContentPane().setBackground(new Color(173, 216, 230));
-		setBounds(30, 500, 323, 308);
+		getContentPane().setBackground(new Color(250, 240, 230));
+		setBounds(30, 500, 323, 319);
 		getContentPane().setLayout(null);
 		getContentPane().add(getLblNewLabel());
 		getContentPane().add(getLblNewLabel_1());
@@ -61,6 +66,9 @@ public class MemberInput extends JInternalFrame {
 		getContentPane().add(getMName());
 		getContentPane().add(getPhone());
 		getContentPane().add(getStatus());
+		getContentPane().add(getSeparator());
+		getContentPane().add(getLblNewLabel_4());
+		getContentPane().add(getSeparator_1());
 	}
 	public MemberInput(List<MemberVo> list) {
 		this();
@@ -89,44 +97,48 @@ public class MemberInput extends JInternalFrame {
 	private JLabel getLblNewLabel() {
 		if (lblNewLabel == null) {
 			lblNewLabel = new JLabel("\uC544\uC774\uB514");
-			lblNewLabel.setForeground(new Color(255, 255, 255));
+			lblNewLabel.setFont(new Font("1훈새마을운동 R", Font.BOLD, 15));
+			lblNewLabel.setForeground(SystemColor.desktop);
 			lblNewLabel.setOpaque(true);
-			lblNewLabel.setBackground(new Color(100, 149, 237));
+			lblNewLabel.setBackground(new Color(250, 240, 230));
 			lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-			lblNewLabel.setBounds(40, 22, 57, 15);
+			lblNewLabel.setBounds(40, 76, 57, 15);
 		}
 		return lblNewLabel;
 	}
 	private JLabel getLblNewLabel_1() {
 		if (lblNewLabel_1 == null) {
 			lblNewLabel_1 = new JLabel("\uBE44\uBC00 \uBC88\uD638");
-			lblNewLabel_1.setForeground(new Color(255, 255, 255));
+			lblNewLabel_1.setFont(new Font("1훈새마을운동 R", Font.BOLD, 15));
+			lblNewLabel_1.setForeground(SystemColor.desktop);
 			lblNewLabel_1.setOpaque(true);
-			lblNewLabel_1.setBackground(new Color(100, 149, 237));
+			lblNewLabel_1.setBackground(new Color(250, 240, 230));
 			lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-			lblNewLabel_1.setBounds(40, 61, 57, 15);
+			lblNewLabel_1.setBounds(40, 101, 57, 15);
 		}
 		return lblNewLabel_1;
 	}
 	private JLabel getLblNewLabel_2() {
 		if (lblNewLabel_2 == null) {
 			lblNewLabel_2 = new JLabel("\uC131\uBA85");
-			lblNewLabel_2.setForeground(new Color(255, 255, 255));
+			lblNewLabel_2.setFont(new Font("1훈새마을운동 R", Font.BOLD, 15));
+			lblNewLabel_2.setForeground(SystemColor.desktop);
 			lblNewLabel_2.setOpaque(true);
-			lblNewLabel_2.setBackground(new Color(100, 149, 237));
+			lblNewLabel_2.setBackground(new Color(250, 240, 230));
 			lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-			lblNewLabel_2.setBounds(40, 96, 57, 15);
+			lblNewLabel_2.setBounds(40, 126, 57, 15);
 		}
 		return lblNewLabel_2;
 	}
 	private JLabel getLblNewLabel_3() {
 		if (lblNewLabel_3 == null) {
 			lblNewLabel_3 = new JLabel("\uC5F0\uB77D\uCC98");
-			lblNewLabel_3.setForeground(new Color(255, 255, 255));
+			lblNewLabel_3.setFont(new Font("1훈새마을운동 R", Font.BOLD, 15));
+			lblNewLabel_3.setForeground(SystemColor.desktop);
 			lblNewLabel_3.setOpaque(true);
-			lblNewLabel_3.setBackground(new Color(100, 149, 237));
+			lblNewLabel_3.setBackground(new Color(250, 240, 230));
 			lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-			lblNewLabel_3.setBounds(40, 135, 57, 15);
+			lblNewLabel_3.setBounds(40, 151, 57, 15);
 		}
 		return lblNewLabel_3;
 	}
@@ -134,21 +146,22 @@ public class MemberInput extends JInternalFrame {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("\uC800\uC7A5");
 			btnNewButton.setForeground(new Color(255, 255, 255));
-			btnNewButton.setBackground(new Color(100, 149, 237));
-			btnNewButton.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+			btnNewButton.setBackground(new Color(154, 205, 50));
+			btnNewButton.setFont(new Font("1훈새마을운동 R", Font.BOLD, 15));
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) { // 저장버튼
 					input();
 				}
 			});
-			btnNewButton.setBounds(89, 173, 151, 44);
+			btnNewButton.setBounds(89, 192, 151, 44);
 		}
 		return btnNewButton;
 	}
 	private JTextField getMId() {
 		if (mId == null) {
 			mId = new JTextField();
-			mId.setBounds(149, 19, 116, 21);
+			mId.setFont(new Font("1훈새마을운동 R", Font.BOLD, 15));
+			mId.setBounds(149, 73, 116, 21);
 			mId.setColumns(10);
 		}
 		return mId;
@@ -156,7 +169,8 @@ public class MemberInput extends JInternalFrame {
 	private JTextField getPwd() {
 		if (pwd == null) {
 			pwd = new JTextField();
-			pwd.setBounds(149, 58, 116, 21);
+			pwd.setFont(new Font("1훈새마을운동 R", Font.BOLD, 15));
+			pwd.setBounds(149, 98, 116, 21);
 			pwd.setColumns(10);
 		}
 		return pwd;
@@ -164,7 +178,8 @@ public class MemberInput extends JInternalFrame {
 	private JTextField getMName() {
 		if (mName == null) {
 			mName = new JTextField();
-			mName.setBounds(149, 93, 116, 21);
+			mName.setFont(new Font("1훈새마을운동 R", Font.BOLD, 15));
+			mName.setBounds(149, 126, 116, 21);
 			mName.setColumns(10);
 		}
 		return mName;
@@ -172,7 +187,8 @@ public class MemberInput extends JInternalFrame {
 	private JTextField getPhone() {
 		if (phone == null) {
 			phone = new JTextField();
-			phone.setBounds(149, 132, 116, 21);
+			phone.setFont(new Font("1훈새마을운동 R", Font.BOLD, 15));
+			phone.setBounds(149, 151, 116, 21);
 			phone.setColumns(10);
 		}
 		return phone;
@@ -181,12 +197,41 @@ public class MemberInput extends JInternalFrame {
 		if (status == null) {
 			status = new JLabel("\uC815\uBCF4\uB97C \uC785\uB825\uD558\uC138\uC694");
 			status.setForeground(new Color(255, 255, 255));
-			status.setFont(new Font("맑은 고딕", Font.BOLD, 12));
+			status.setFont(new Font("1훈새마을운동 R", Font.BOLD, 15));
 			status.setHorizontalAlignment(SwingConstants.CENTER);
 			status.setOpaque(true);
-			status.setBackground(new Color(100, 149, 237));
-			status.setBounds(12, 238, 283, 31);
+			status.setBackground(new Color(154, 205, 50));
+			status.setBounds(12, 249, 283, 31);
 		}
 		return status;
+	}
+	private JSeparator getSeparator() {
+		if (separator == null) {
+			separator = new JSeparator();
+			separator.setOpaque(true);
+			separator.setForeground(new Color(154, 205, 50));
+			separator.setBackground(new Color(154, 205, 50));
+			separator.setBounds(120, 64, 2, 120);
+		}
+		return separator;
+	}
+	private JLabel getLblNewLabel_4() {
+		if (lblNewLabel_4 == null) {
+			lblNewLabel_4 = new JLabel("\uD68C\uC6D0 \uC785\uB825");
+			lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNewLabel_4.setFont(new Font("타이포_스톰 B", Font.BOLD, 35));
+			lblNewLabel_4.setBounds(12, 10, 283, 50);
+		}
+		return lblNewLabel_4;
+	}
+	private JSeparator getSeparator_1() {
+		if (separator_1 == null) {
+			separator_1 = new JSeparator();
+			separator_1.setOpaque(true);
+			separator_1.setForeground(new Color(154, 205, 50));
+			separator_1.setBackground(new Color(154, 205, 50));
+			separator_1.setBounds(12, 64, 283, 2);
+		}
+		return separator_1;
 	}
 }

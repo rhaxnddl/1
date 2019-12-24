@@ -8,8 +8,12 @@ public class ScoreVo {
 	int kor;
 	int eng;
 	int mat;
-	int tot = (kor+eng+mat);
-	double avg = (tot/3);
+	int tot;
+	double avg;
+	
+	ScoreVo(){
+		
+	}
 	
 	public ScoreVo
 	(String sno, String mName, String exam, int grade, int kor, int eng, int mat) {
@@ -20,29 +24,24 @@ public class ScoreVo {
 		this.kor = kor;
 		this.eng = eng;
 		this.mat = mat;
+		this.tot = (kor+eng+mat);
+		this.avg = (double)tot/3;
 	}
 	@Override
 	public boolean equals(Object obj) {
 		boolean r = false;
 		if(obj instanceof ScoreVo) {
-			ScoreVo svo = (ScoreVo)obj;
-			if(sno == svo.sno) {
-				r = true;
-			}else
+			ScoreVo s = (ScoreVo)obj;
+			if(getSno().equals(s.getSno())) 	r = true;
+		}		
 				r = false;
-		}
 		return r;
 	}
 	@Override
 	public int hashCode() {
-		int code = sno.hashCode();
-		return code;
+		return sno.hashCode();		
 	}
-//	@Override
-//	public String toString() {
-//		String 
-//	}
-//	
+	
 	public String getSno() {
 		return sno;
 	}

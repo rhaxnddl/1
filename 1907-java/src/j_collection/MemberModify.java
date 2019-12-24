@@ -14,6 +14,8 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
+import javax.swing.JSeparator;
 
 public class MemberModify extends JInternalFrame {
 	int index;		
@@ -30,6 +32,7 @@ public class MemberModify extends JInternalFrame {
 	private JButton btnNewButton_1;
 	private JButton btnNewButton_2;
 	private JLabel status;
+	private JSeparator separator;
 
 	/**
 	 * Launch the application.
@@ -52,9 +55,9 @@ public class MemberModify extends JInternalFrame {
 	 */
 	public MemberModify() {
 		super("È¸¿ø ¼öÁ¤&»èÁ¦", false, true, true, true);
-		getContentPane().setBackground(new Color(173, 216, 230));
+		getContentPane().setBackground(new Color(250, 240, 230));
 		setVisible(true);
-		setBounds(300, 100, 293, 300);
+		setBounds(300, 100, 293, 279);
 		getContentPane().setLayout(null);
 		getContentPane().add(getLblNewLabel());
 		getContentPane().add(getLblNewLabel_1());
@@ -68,6 +71,7 @@ public class MemberModify extends JInternalFrame {
 		getContentPane().add(getBtnNewButton_1());
 		getContentPane().add(getBtnNewButton_2());
 		getContentPane().add(getStatus());
+		getContentPane().add(getSeparator());
 		
 
 	}
@@ -142,10 +146,10 @@ public class MemberModify extends JInternalFrame {
 		if (lblNewLabel == null) {
 			lblNewLabel = new JLabel("\uC544\uC774\uB514");
 			lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-			lblNewLabel.setForeground(new Color(255, 255, 255));
-			lblNewLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
+			lblNewLabel.setForeground(SystemColor.desktop);
+			lblNewLabel.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
 			lblNewLabel.setOpaque(true);
-			lblNewLabel.setBackground(new Color(100, 149, 237));
+			lblNewLabel.setBackground(new Color(250, 240, 230));
 			lblNewLabel.setBounds(12, 21, 62, 15);
 		}
 		return lblNewLabel;
@@ -154,10 +158,10 @@ public class MemberModify extends JInternalFrame {
 		if (lblNewLabel_1 == null) {
 			lblNewLabel_1 = new JLabel("\uBE44\uBC00 \uBC88\uD638");
 			lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-			lblNewLabel_1.setForeground(new Color(255, 255, 255));
-			lblNewLabel_1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
+			lblNewLabel_1.setForeground(SystemColor.desktop);
+			lblNewLabel_1.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
 			lblNewLabel_1.setOpaque(true);
-			lblNewLabel_1.setBackground(new Color(100, 149, 237));
+			lblNewLabel_1.setBackground(new Color(250, 240, 230));
 			lblNewLabel_1.setBounds(12, 52, 62, 21);
 		}
 		return lblNewLabel_1;
@@ -166,10 +170,10 @@ public class MemberModify extends JInternalFrame {
 		if (lblNewLabel_2 == null) {
 			lblNewLabel_2 = new JLabel("\uC131\uBA85");
 			lblNewLabel_2.setOpaque(true);
-			lblNewLabel_2.setBackground(new Color(100, 149, 237));
+			lblNewLabel_2.setBackground(new Color(250, 240, 230));
 			lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-			lblNewLabel_2.setForeground(new Color(255, 255, 255));
-			lblNewLabel_2.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
+			lblNewLabel_2.setForeground(SystemColor.desktop);
+			lblNewLabel_2.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
 			lblNewLabel_2.setBounds(12, 83, 62, 15);
 		}
 		return lblNewLabel_2;
@@ -177,10 +181,10 @@ public class MemberModify extends JInternalFrame {
 	private JLabel getLblNewLabel_3() {
 		if (lblNewLabel_3 == null) {
 			lblNewLabel_3 = new JLabel("\uC5F0\uB77D\uCC98");
-			lblNewLabel_3.setBackground(new Color(100, 149, 237));
-			lblNewLabel_3.setForeground(new Color(255, 255, 255));
+			lblNewLabel_3.setBackground(new Color(250, 240, 230));
+			lblNewLabel_3.setForeground(SystemColor.desktop);
 			lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-			lblNewLabel_3.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
+			lblNewLabel_3.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
 			lblNewLabel_3.setOpaque(true);
 			lblNewLabel_3.setBounds(12, 114, 62, 15);
 		}
@@ -189,6 +193,7 @@ public class MemberModify extends JInternalFrame {
 	private JTextField getMId() {
 		if (mId == null) {
 			mId = new JTextField();
+			mId.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
 			mId.setBounds(86, 18, 105, 21);
 			mId.setColumns(10);
 		}
@@ -197,6 +202,7 @@ public class MemberModify extends JInternalFrame {
 	private JTextField getPwd() {
 		if (pwd == null) {
 			pwd = new JTextField();
+			pwd.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
 			pwd.setBounds(86, 53, 105, 21);
 			pwd.setColumns(10);
 		}
@@ -205,6 +211,7 @@ public class MemberModify extends JInternalFrame {
 	private JTextField getMName() {
 		if (mName == null) {
 			mName = new JTextField();
+			mName.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
 			mName.setBounds(86, 80, 105, 21);
 			mName.setColumns(10);
 		}
@@ -213,6 +220,7 @@ public class MemberModify extends JInternalFrame {
 	private JTextField getPhone() {
 		if (phone == null) {
 			phone = new JTextField();
+			phone.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
 			phone.setBounds(86, 111, 105, 21);
 			phone.setColumns(10);
 		}
@@ -222,8 +230,8 @@ public class MemberModify extends JInternalFrame {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("\uC218\uC815");
 			btnNewButton.setForeground(new Color(255, 255, 255));
-			btnNewButton.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
-			btnNewButton.setBackground(new Color(100, 149, 237));
+			btnNewButton.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
+			btnNewButton.setBackground(new Color(154, 205, 50));
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					modify();
@@ -237,8 +245,8 @@ public class MemberModify extends JInternalFrame {
 		if (btnNewButton_1 == null) {
 			btnNewButton_1 = new JButton("\uC0AD\uC81C");
 			btnNewButton_1.setForeground(new Color(255, 255, 255));
-			btnNewButton_1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
-			btnNewButton_1.setBackground(new Color(100, 149, 237));
+			btnNewButton_1.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
+			btnNewButton_1.setBackground(new Color(154, 205, 50));
 			btnNewButton_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					delete();
@@ -252,8 +260,8 @@ public class MemberModify extends JInternalFrame {
 		if (btnNewButton_2 == null) {
 			btnNewButton_2 = new JButton("\uAC80\uC0C9");
 			btnNewButton_2.setForeground(new Color(255, 255, 255));
-			btnNewButton_2.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
-			btnNewButton_2.setBackground(new Color(100, 149, 237));
+			btnNewButton_2.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
+			btnNewButton_2.setBackground(new Color(154, 205, 50));
 			btnNewButton_2.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					search();
@@ -268,11 +276,20 @@ public class MemberModify extends JInternalFrame {
 			status = new JLabel("\uB370\uC774\uD130\uB97C \uAC80\uC0C9\uD558\uC138\uC694");
 			status.setForeground(new Color(255, 255, 255));
 			status.setHorizontalAlignment(SwingConstants.CENTER);
-			status.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
+			status.setFont(new Font("Å¸ÀÌÆ÷_½ºÅè B", Font.BOLD, 18));
 			status.setOpaque(true);
-			status.setBackground(new Color(100, 149, 237));
+			status.setBackground(new Color(154, 205, 50));
 			status.setBounds(12, 201, 253, 41);
 		}
 		return status;
+	}
+	private JSeparator getSeparator() {
+		if (separator == null) {
+			separator = new JSeparator();
+			separator.setOpaque(true);
+			separator.setBackground(new Color(154, 205, 50));
+			separator.setBounds(74, 10, 4, 133);
+		}
+		return separator;
 	}
 }

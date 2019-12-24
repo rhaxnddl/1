@@ -86,7 +86,7 @@ public class MemberSearch extends JInternalFrame {
 	private JTextField getFindStr() {
 		if (findStr == null) {
 			findStr = new JTextField();
-			findStr.setBackground(new Color(230, 230, 250));
+			findStr.setBackground(SystemColor.menu);
 			findStr.setColumns(10);
 		}
 		return findStr;
@@ -95,8 +95,8 @@ public class MemberSearch extends JInternalFrame {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("\uAC80\uC0C9");
 			btnNewButton.setForeground(new Color(255, 255, 255));
-			btnNewButton.setBackground(new Color(100, 149, 237));
-			btnNewButton.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
+			btnNewButton.setBackground(new Color(154, 205, 50));
+			btnNewButton.setFont(new Font("Å¸ÀÌÆ÷_½ºÅè B", Font.BOLD, 15));
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					search();
@@ -115,8 +115,8 @@ public class MemberSearch extends JInternalFrame {
 	private JTextArea getTextArea() {
 		if (textArea == null) {
 			textArea = new JTextArea();
-			textArea.setForeground(new Color(255, 255, 255));
-			textArea.setBackground(new Color(173, 216, 230));
+			textArea.setForeground(new Color(0, 0, 0));
+			textArea.setBackground(new Color(250, 240, 230));
 		}
 		return textArea;
 	}

@@ -19,6 +19,8 @@ import java.util.Set;
 import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
 import java.awt.Font;
+import java.awt.Color;
+import java.awt.SystemColor;
 
 public class ProductSearch extends JInternalFrame {
 	Set<ProductVo> piList;
@@ -114,12 +116,15 @@ public class ProductSearch extends JInternalFrame {
 	private JTextArea getTextArea() {
 		if (textArea == null) {
 			textArea = new JTextArea();
+			textArea.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.PLAIN, 15));
+			textArea.setBackground(SystemColor.menu);
 		}
 		return textArea;
 	}
 	private JTextField getTextField_1() {
 		if (textField == null) {
 			textField = new JTextField();
+			textField.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
 			textField.setColumns(10);
 		}
 		return textField;
@@ -127,7 +132,9 @@ public class ProductSearch extends JInternalFrame {
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("\uAC80\uC0C9");
-			btnNewButton.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
+			btnNewButton.setForeground(Color.WHITE);
+			btnNewButton.setBackground(new Color(154, 205, 50));
+			btnNewButton.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					search();
@@ -139,6 +146,7 @@ public class ProductSearch extends JInternalFrame {
 	private JPanel getPanel_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
+			panel_1.setBackground(new Color(154, 205, 50));
 			panel_1.setPreferredSize(new Dimension(120, 10));
 			panel_1.add(getImBtn());
 			panel_1.add(getExBtn());
@@ -148,7 +156,9 @@ public class ProductSearch extends JInternalFrame {
 	private JRadioButton getImBtn() {
 		if (imBtn == null) {
 			imBtn = new JRadioButton("\uC785\uACE0");
-			imBtn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
+			imBtn.setForeground(new Color(255, 255, 255));
+			imBtn.setBackground(new Color(154, 205, 50));
+			imBtn.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
 			group.add(imBtn);
 			imBtn.setSelected(true);
 		}
@@ -157,7 +167,9 @@ public class ProductSearch extends JInternalFrame {
 	private JRadioButton getExBtn() {
 		if (exBtn == null) {
 			exBtn = new JRadioButton("\uCD9C\uACE0");
-			exBtn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
+			exBtn.setForeground(new Color(255, 255, 255));
+			exBtn.setBackground(new Color(154, 205, 50));
+			exBtn.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
 			group.add(exBtn);
 		}
 		return exBtn;

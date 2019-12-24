@@ -14,6 +14,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
 
 public class ProductOutput extends JInternalFrame {
 	Set<ProductVo> peList;		
@@ -27,6 +29,9 @@ public class ProductOutput extends JInternalFrame {
 	private JTextField nal;
 	private JButton btnNewButton;
 	private JLabel status;
+	private JLabel lblNewLabel_4;
+	private JSeparator separator;
+	private JSeparator separator_1;
 
 	/**
 	 * Launch the application.
@@ -49,8 +54,9 @@ public class ProductOutput extends JInternalFrame {
 	 */
 	public ProductOutput() {
 		super("Á¦Ç° Ãâ°í", false, true, true, true);
+		getContentPane().setBackground(new Color(250, 240, 230));
 		setVisible(true);
-		setBounds(100, 100, 267, 217);
+		setBounds(100, 100, 267, 306);
 		getContentPane().setLayout(null);
 		getContentPane().add(getLblNewLabel());
 		getContentPane().add(getLblNewLabel_1());
@@ -62,6 +68,9 @@ public class ProductOutput extends JInternalFrame {
 		getContentPane().add(getNal());
 		getContentPane().add(getBtnNewButton());
 		getContentPane().add(getStatus());
+		getContentPane().add(getLblNewLabel_4());
+		getContentPane().add(getSeparator());
+		getContentPane().add(getSeparator_1());
 
 	}
 	public ProductOutput(Set<ProductVo> pe) {
@@ -111,39 +120,44 @@ public class ProductOutput extends JInternalFrame {
 	private JLabel getLblNewLabel() {
 		if (lblNewLabel == null) {
 			lblNewLabel = new JLabel("\uC81C\uD488 \uCF54\uB4DC");
-			lblNewLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
-			lblNewLabel.setBounds(12, 10, 57, 15);
+			lblNewLabel.setBackground(new Color(250, 240, 230));
+			lblNewLabel.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
+			lblNewLabel.setBounds(12, 74, 57, 15);
 		}
 		return lblNewLabel;
 	}
 	private JLabel getLblNewLabel_1() {
 		if (lblNewLabel_1 == null) {
 			lblNewLabel_1 = new JLabel("\uC81C\uD488\uBA85");
-			lblNewLabel_1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
-			lblNewLabel_1.setBounds(12, 35, 57, 15);
+			lblNewLabel_1.setBackground(new Color(250, 240, 230));
+			lblNewLabel_1.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
+			lblNewLabel_1.setBounds(12, 105, 57, 15);
 		}
 		return lblNewLabel_1;
 	}
 	private JLabel getLblNewLabel_2() {
 		if (lblNewLabel_2 == null) {
 			lblNewLabel_2 = new JLabel("\uCD9C\uACE0 \uC218\uB7C9");
-			lblNewLabel_2.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
-			lblNewLabel_2.setBounds(12, 60, 57, 15);
+			lblNewLabel_2.setBackground(new Color(250, 240, 230));
+			lblNewLabel_2.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
+			lblNewLabel_2.setBounds(12, 136, 57, 15);
 		}
 		return lblNewLabel_2;
 	}
 	private JLabel getLblNewLabel_3() {
 		if (lblNewLabel_3 == null) {
 			lblNewLabel_3 = new JLabel("\uCD9C\uACE0 \uC77C\uC790");
-			lblNewLabel_3.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
-			lblNewLabel_3.setBounds(12, 85, 57, 15);
+			lblNewLabel_3.setBackground(new Color(250, 240, 230));
+			lblNewLabel_3.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
+			lblNewLabel_3.setBounds(12, 167, 57, 15);
 		}
 		return lblNewLabel_3;
 	}
 	private JTextField getPCode() {
 		if (pCode == null) {
 			pCode = new JTextField();
-			pCode.setBounds(81, 7, 164, 21);
+			pCode.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
+			pCode.setBounds(94, 72, 145, 21);
 			pCode.setColumns(10);
 		}
 		return pCode;
@@ -151,7 +165,8 @@ public class ProductOutput extends JInternalFrame {
 	private JTextField getPName() {
 		if (pName == null) {
 			pName = new JTextField();
-			pName.setBounds(81, 32, 164, 21);
+			pName.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
+			pName.setBounds(94, 103, 145, 21);
 			pName.setColumns(10);
 		}
 		return pName;
@@ -159,7 +174,8 @@ public class ProductOutput extends JInternalFrame {
 	private JTextField getEa() {
 		if (ea == null) {
 			ea = new JTextField();
-			ea.setBounds(81, 57, 116, 21);
+			ea.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
+			ea.setBounds(94, 134, 116, 21);
 			ea.setColumns(10);
 		}
 		return ea;
@@ -167,7 +183,8 @@ public class ProductOutput extends JInternalFrame {
 	private JTextField getNal() {
 		if (nal == null) {
 			nal = new JTextField();
-			nal.setBounds(81, 82, 116, 21);
+			nal.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
+			nal.setBounds(94, 165, 116, 21);
 			nal.setColumns(10);
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");
@@ -179,23 +196,57 @@ public class ProductOutput extends JInternalFrame {
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("\uCD9C\uACE0");
+			btnNewButton.setForeground(new Color(255, 255, 255));
+			btnNewButton.setBackground(new Color(154, 205, 50));
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					output();
 				}
 			});
-			btnNewButton.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
-			btnNewButton.setBounds(69, 113, 97, 23);
+			btnNewButton.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
+			btnNewButton.setBounds(91, 196, 97, 23);
 		}
 		return btnNewButton;
 	}
 	private JLabel getStatus() {
 		if (status == null) {
-			status = new JLabel("");
+			status = new JLabel("\uC815\uBCF4\uB97C \uC785\uB825\uD558\uC138\uC694.");
+			status.setHorizontalAlignment(SwingConstants.CENTER);
+			status.setForeground(new Color(255, 255, 255));
+			status.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 18));
 			status.setOpaque(true);
-			status.setBackground(new Color(255, 204, 0));
-			status.setBounds(12, 143, 233, 38);
+			status.setBackground(new Color(154, 205, 50));
+			status.setBounds(12, 229, 227, 38);
 		}
 		return status;
+	}
+	private JLabel getLblNewLabel_4() {
+		if (lblNewLabel_4 == null) {
+			lblNewLabel_4 = new JLabel("\uC81C\uD488 \uCD9C\uACE0");
+			lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNewLabel_4.setFont(new Font("Å¸ÀÌÆ÷_½ºÅè B", Font.BOLD, 35));
+			lblNewLabel_4.setBounds(12, 10, 227, 40);
+		}
+		return lblNewLabel_4;
+	}
+	private JSeparator getSeparator() {
+		if (separator == null) {
+			separator = new JSeparator();
+			separator.setOpaque(true);
+			separator.setForeground(new Color(154, 205, 50));
+			separator.setBackground(new Color(154, 205, 50));
+			separator.setBounds(12, 60, 227, 2);
+		}
+		return separator;
+	}
+	private JSeparator getSeparator_1() {
+		if (separator_1 == null) {
+			separator_1 = new JSeparator();
+			separator_1.setForeground(new Color(154, 205, 50));
+			separator_1.setBackground(new Color(154, 205, 50));
+			separator_1.setOpaque(true);
+			separator_1.setBounds(81, 60, 2, 137);
+		}
+		return separator_1;
 	}
 }

@@ -13,6 +13,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class ProductInput extends JInternalFrame {
 	Set<ProductVo> piList;
@@ -26,6 +29,9 @@ public class ProductInput extends JInternalFrame {
 	private JTextField nal;
 	private JButton btnNewButton;
 	private JLabel status;
+	private JLabel lblNewLabel_4;
+	private JSeparator separator;
+	private JSeparator separator_1;
 
 	/**
 	 * Launch the application.
@@ -48,8 +54,9 @@ public class ProductInput extends JInternalFrame {
 	 */
 	public ProductInput() {
 		super("제품 입고", false, true, true, true);
+		getContentPane().setBackground(new Color(250, 240, 230));
 		setVisible(true);
-		setBounds(100, 100, 256, 228);
+		setBounds(100, 100, 256, 309);
 		getContentPane().setLayout(null);
 		getContentPane().add(getLblNewLabel());
 		getContentPane().add(getLblNewLabel_1());
@@ -61,6 +68,9 @@ public class ProductInput extends JInternalFrame {
 		getContentPane().add(getNal());
 		getContentPane().add(getBtnNewButton());
 		getContentPane().add(getStatus());
+		getContentPane().add(getLblNewLabel_4());
+		getContentPane().add(getSeparator());
+		getContentPane().add(getSeparator_1());
 	}
 	public ProductInput(Set<ProductVo> pi) {
 		this(); // 자기 자신의 생성자를 부를때, 생성자안에서 실행문의 첫번째 문장에 작성해야한다.
@@ -108,35 +118,48 @@ public class ProductInput extends JInternalFrame {
 	private JLabel getLblNewLabel() {
 		if (lblNewLabel == null) {
 			lblNewLabel = new JLabel("\uC81C\uD488 \uCF54\uB4DC");
-			lblNewLabel.setBounds(12, 10, 57, 15);
+			lblNewLabel.setBackground(new Color(250, 235, 215));
+			lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNewLabel.setFont(new Font("1훈새마을운동 R", Font.BOLD, 15));
+			lblNewLabel.setBounds(12, 67, 57, 15);
 		}
 		return lblNewLabel;
 	}
 	private JLabel getLblNewLabel_1() {
 		if (lblNewLabel_1 == null) {
 			lblNewLabel_1 = new JLabel("\uC81C\uD488 \uBA85");
-			lblNewLabel_1.setBounds(12, 35, 57, 15);
+			lblNewLabel_1.setBackground(new Color(250, 240, 230));
+			lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNewLabel_1.setFont(new Font("1훈새마을운동 R", Font.BOLD, 15));
+			lblNewLabel_1.setBounds(12, 98, 57, 15);
 		}
 		return lblNewLabel_1;
 	}
 	private JLabel getLblNewLabel_2() {
 		if (lblNewLabel_2 == null) {
 			lblNewLabel_2 = new JLabel("\uC218\uB7C9");
-			lblNewLabel_2.setBounds(12, 60, 57, 15);
+			lblNewLabel_2.setBackground(new Color(250, 240, 230));
+			lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNewLabel_2.setFont(new Font("1훈새마을운동 R", Font.BOLD, 15));
+			lblNewLabel_2.setBounds(12, 129, 57, 15);
 		}
 		return lblNewLabel_2;
 	}
 	private JLabel getLblNewLabel_3() {
 		if (lblNewLabel_3 == null) {
 			lblNewLabel_3 = new JLabel("\uC785\uACE0\uC77C\uC790");
-			lblNewLabel_3.setBounds(12, 85, 57, 15);
+			lblNewLabel_3.setBackground(new Color(250, 240, 230));
+			lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNewLabel_3.setFont(new Font("1훈새마을운동 R", Font.BOLD, 15));
+			lblNewLabel_3.setBounds(12, 160, 57, 15);
 		}
 		return lblNewLabel_3;
 	}
 	private JTextField getPCode() {
 		if (pCode == null) {
 			pCode = new JTextField();
-			pCode.setBounds(81, 7, 152, 21);
+			pCode.setFont(new Font("1훈새마을운동 R", Font.BOLD, 15));
+			pCode.setBounds(81, 64, 147, 21);
 			pCode.setColumns(10);
 			
 			
@@ -146,7 +169,8 @@ public class ProductInput extends JInternalFrame {
 	private JTextField getPName() {
 		if (pName == null) {
 			pName = new JTextField();
-			pName.setBounds(81, 32, 152, 21);
+			pName.setFont(new Font("1훈새마을운동 R", Font.BOLD, 15));
+			pName.setBounds(81, 95, 147, 21);
 			pName.setColumns(10);
 		}
 		return pName;
@@ -154,7 +178,8 @@ public class ProductInput extends JInternalFrame {
 	private JTextField getEa() {
 		if (ea == null) {
 			ea = new JTextField();
-			ea.setBounds(81, 57, 72, 21);
+			ea.setFont(new Font("1훈새마을운동 R", Font.BOLD, 15));
+			ea.setBounds(81, 126, 72, 21);
 			ea.setColumns(10);
 		}
 		return ea;
@@ -162,7 +187,8 @@ public class ProductInput extends JInternalFrame {
 	private JTextField getNal() {
 		if (nal == null) {
 			nal = new JTextField();
-			nal.setBounds(81, 82, 116, 21);
+			nal.setFont(new Font("1훈새마을운동 R", Font.BOLD, 15));
+			nal.setBounds(81, 157, 116, 21);
 			nal.setColumns(10);
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -174,22 +200,56 @@ public class ProductInput extends JInternalFrame {
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("\uC785\uACE0");
+			btnNewButton.setForeground(new Color(255, 255, 255));
+			btnNewButton.setFont(new Font("1훈새마을운동 R", Font.BOLD, 15));
+			btnNewButton.setBackground(new Color(154, 205, 50));
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					input();
 				}
 			});
-			btnNewButton.setBounds(76, 123, 97, 23);
+			btnNewButton.setBounds(68, 200, 97, 23);
 		}
 		return btnNewButton;
 	}
 	private JLabel getStatus() {
 		if (status == null) {
-			status = new JLabel("");
+			status = new JLabel("\uC815\uBCF4\uB97C \uC785\uB825\uD558\uC138\uC694.");
+			status.setHorizontalAlignment(SwingConstants.CENTER);
+			status.setForeground(new Color(255, 255, 255));
+			status.setFont(new Font("타이포_스톰 B", Font.BOLD, 18));
 			status.setOpaque(true);
-			status.setBackground(new Color(255, 204, 0));
-			status.setBounds(12, 156, 221, 33);
+			status.setBackground(new Color(154, 205, 50));
+			status.setBounds(12, 233, 221, 33);
 		}
 		return status;
+	}
+	private JLabel getLblNewLabel_4() {
+		if (lblNewLabel_4 == null) {
+			lblNewLabel_4 = new JLabel("\uC81C\uD488 \uC785\uACE0");
+			lblNewLabel_4.setFont(new Font("타이포_스톰 B", Font.PLAIN, 35));
+			lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNewLabel_4.setBounds(12, 10, 221, 47);
+		}
+		return lblNewLabel_4;
+	}
+	private JSeparator getSeparator() {
+		if (separator == null) {
+			separator = new JSeparator();
+			separator.setForeground(new Color(154, 205, 50));
+			separator.setBackground(new Color(154, 205, 50));
+			separator.setBounds(12, 55, 216, 2);
+		}
+		return separator;
+	}
+	private JSeparator getSeparator_1() {
+		if (separator_1 == null) {
+			separator_1 = new JSeparator();
+			separator_1.setOpaque(true);
+			separator_1.setBackground(new Color(154, 205, 50));
+			separator_1.setForeground(new Color(154, 205, 50));
+			separator_1.setBounds(68, 55, 2, 134);
+		}
+		return separator_1;
 	}
 }
