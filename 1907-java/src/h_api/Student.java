@@ -13,7 +13,7 @@ public class Student {
 		this.sno = sno;
 		this.name = name;
 		this.score = score;
-	} // SortExamì—ì„œ ì‚¬ìš©í•  ìƒì„±ì
+	} // SortExam¿¡¼­ »ç¿ëµÉ »ı¼ºÀÚ
 	
 		@Override
 	public String toString() {

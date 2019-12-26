@@ -1,4 +1,4 @@
-// 2019.12.19
+// 2019.12.26
 package a_begin;
 
 public class Score2 {

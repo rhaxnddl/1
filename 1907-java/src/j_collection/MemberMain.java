@@ -54,6 +54,12 @@ public class MemberMain extends JFrame {
 	private JMenu mnNewMenu_2;
 	private JMenuItem mntmNewMenuItem_7;
 	private JMenuItem mntmNewMenuItem_8;
+	private JMenu mnNewMenu_3;
+	private JMenuItem mntmNewMenuItem_9;
+	private JMenuItem mntmNewMenuItem_10;
+	private JMenuItem mntmNewMenuItem_11;
+	private JMenuItem mntmNewMenuItem_12;
+	private JMenuItem mntmNewMenuItem_13;
 
 	/**
 	 * Launch the application.
@@ -134,14 +140,16 @@ public class MemberMain extends JFrame {
 			menuBar.setBackground(new Color(154, 205, 50));
 			menuBar.add(getMnNewMenu());
 			menuBar.add(getMnNewMenu_1());
-			menuBar.add(getMenu());
 			menuBar.add(getMnNewMenu_2());
+			menuBar.add(getMnNewMenu_3());
+			menuBar.add(getMenu());
 		}
 		return menuBar;
 	}
 	private JMenu getMnNewMenu() {
 		if (mnNewMenu == null) {
 			mnNewMenu = new JMenu("\uD68C\uC6D0 \uAD00\uB9AC");
+			mnNewMenu.setOpaque(true);
 			mnNewMenu.setBackground(new Color(154, 205, 50));
 			mnNewMenu.setForeground(new Color(255, 255, 255));
 			mnNewMenu.setFont(new Font("≈∏¿Ã∆˜_Ω∫≈Ë B", Font.BOLD, 20));
@@ -154,6 +162,7 @@ public class MemberMain extends JFrame {
 	private JMenuItem getMntmNewMenuItem() {
 		if (mntmNewMenuItem == null) {
 			mntmNewMenuItem = new JMenuItem("\uC785\uB825");
+			mntmNewMenuItem.setOpaque(true);
 			mntmNewMenuItem.setForeground(new Color(255, 255, 255));
 			mntmNewMenuItem.setBackground(new Color(154, 205, 50));
 			mntmNewMenuItem.setFont(new Font("≈∏¿Ã∆˜_Ω∫≈Ë B", Font.BOLD, 18));
@@ -169,6 +178,7 @@ public class MemberMain extends JFrame {
 	private JMenuItem getMntmNewMenuItem_1() {
 		if (mntmNewMenuItem_1 == null) {
 			mntmNewMenuItem_1 = new JMenuItem("\uC870\uD68C");
+			mntmNewMenuItem_1.setOpaque(true);
 			mntmNewMenuItem_1.setForeground(new Color(255, 255, 255));
 			mntmNewMenuItem_1.setBackground(new Color(154, 205, 50));
 			mntmNewMenuItem_1.setFont(new Font("≈∏¿Ã∆˜_Ω∫≈Ë B", Font.BOLD, 18));
@@ -184,6 +194,7 @@ public class MemberMain extends JFrame {
 	private JMenuItem getMntmNewMenuItem_2() {
 		if (mntmNewMenuItem_2 == null) {
 			mntmNewMenuItem_2 = new JMenuItem("\uC218\uC815&\uC0AD\uC81C");
+			mntmNewMenuItem_2.setOpaque(true);
 			mntmNewMenuItem_2.setForeground(new Color(255, 255, 255));
 			mntmNewMenuItem_2.setBackground(new Color(154, 205, 50));
 			mntmNewMenuItem_2.setFont(new Font("≈∏¿Ã∆˜_Ω∫≈Ë B", Font.BOLD, 18));
@@ -199,6 +210,7 @@ public class MemberMain extends JFrame {
 	private JMenu getMnNewMenu_1() {
 		if (mnNewMenu_1 == null) {
 			mnNewMenu_1 = new JMenu("\uC790\uC7AC \uAD00\uB9AC");
+			mnNewMenu_1.setOpaque(true);
 			mnNewMenu_1.setBackground(new Color(154, 205, 50));
 			mnNewMenu_1.setForeground(Color.WHITE);
 			mnNewMenu_1.setFont(new Font("≈∏¿Ã∆˜_Ω∫≈Ë B", Font.BOLD, 20));
@@ -212,6 +224,7 @@ public class MemberMain extends JFrame {
 	private JMenuItem getMntmNewMenuItem_3() {
 		if (mntmNewMenuItem_3 == null) {
 			mntmNewMenuItem_3 = new JMenuItem("\uC785\uACE0");
+			mntmNewMenuItem_3.setOpaque(true);
 			mntmNewMenuItem_3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					ProductInput panel = new ProductInput(piList);
@@ -228,6 +241,7 @@ public class MemberMain extends JFrame {
 	private JMenuItem getMntmNewMenuItem_4() {
 		if (mntmNewMenuItem_4 == null) {
 			mntmNewMenuItem_4 = new JMenuItem("\uCD9C\uACE0");
+			mntmNewMenuItem_4.setOpaque(true);
 			mntmNewMenuItem_4.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					ProductOutput panel = new ProductOutput(peList);
@@ -244,6 +258,7 @@ public class MemberMain extends JFrame {
 	private JMenuItem getMntmNewMenuItem_5() {
 		if (mntmNewMenuItem_5 == null) {
 			mntmNewMenuItem_5 = new JMenuItem("\uC870\uD68C");
+			mntmNewMenuItem_5.setOpaque(true);
 			mntmNewMenuItem_5.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					ProductSearch panel = new ProductSearch(piList, peList);
@@ -260,6 +275,7 @@ public class MemberMain extends JFrame {
 	private JMenuItem getMntmNewMenuItem_6() {
 		if (mntmNewMenuItem_6 == null) {
 			mntmNewMenuItem_6 = new JMenuItem("\uC218\uC815&\uC0AD\uC81C");
+			mntmNewMenuItem_6.setOpaque(true);
 			mntmNewMenuItem_6.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					ProductModify panel = new ProductModify(piList, peList);
@@ -282,6 +298,7 @@ public class MemberMain extends JFrame {
 	private JMenu getMnNewMenu_2() {
 		if (mnNewMenu_2 == null) {
 			mnNewMenu_2 = new JMenu("\uC131\uC801 \uAD00\uB9AC");
+			mnNewMenu_2.setOpaque(true);
 			mnNewMenu_2.setFont(new Font("≈∏¿Ã∆˜_Ω∫≈Ë B", Font.BOLD, 20));
 			mnNewMenu_2.setForeground(new Color(255, 255, 255));
 			mnNewMenu_2.setBackground(new Color(154, 205, 50));
@@ -293,13 +310,14 @@ public class MemberMain extends JFrame {
 	private JMenuItem getMntmNewMenuItem_7() {
 		if (mntmNewMenuItem_7 == null) {
 			mntmNewMenuItem_7 = new JMenuItem("\uC785\uB825");
+			mntmNewMenuItem_7.setOpaque(true);
 			mntmNewMenuItem_7.setFont(new Font("≈∏¿Ã∆˜_Ω∫≈Ë B", Font.BOLD, 18));
 			mntmNewMenuItem_7.setForeground(new Color(255, 255, 255));
 			mntmNewMenuItem_7.setBackground(new Color(154, 205, 50));
 			mntmNewMenuItem_7.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
-					ScoreInput panel = new ScoreInput(map);
+					ScoreInput panel = new ScoreInput(map, MemberMain.this);
 					contentPane.add(panel);
 					panel.toFront();
 				}
@@ -310,6 +328,7 @@ public class MemberMain extends JFrame {
 	private JMenuItem getMntmNewMenuItem_8() {
 		if (mntmNewMenuItem_8 == null) {
 			mntmNewMenuItem_8 = new JMenuItem("\uC870\uD68C");
+			mntmNewMenuItem_8.setOpaque(true);
 			mntmNewMenuItem_8.setFont(new Font("≈∏¿Ã∆˜_Ω∫≈Ë B", Font.BOLD, 18));
 			mntmNewMenuItem_8.setForeground(new Color(255, 255, 255));
 			mntmNewMenuItem_8.setBackground(new Color(154, 205, 50));
@@ -321,5 +340,105 @@ public class MemberMain extends JFrame {
 			});
 		}
 		return mntmNewMenuItem_8;
+	}
+	private JMenu getMnNewMenu_3() {
+		if (mnNewMenu_3 == null) {
+			mnNewMenu_3 = new JMenu("\uAE30\uD0C0 \uCEEC\uB809\uC158");
+			mnNewMenu_3.setOpaque(true);
+			mnNewMenu_3.setBackground(new Color(154, 205, 50));
+			mnNewMenu_3.setFont(new Font("≈∏¿Ã∆˜_Ω∫≈Ë B", Font.BOLD, 20));
+			mnNewMenu_3.setForeground(Color.WHITE);
+			mnNewMenu_3.add(getMntmNewMenuItem_9());
+			mnNewMenu_3.add(getMntmNewMenuItem_10());
+			mnNewMenu_3.add(getMntmNewMenuItem_13());
+			mnNewMenu_3.add(getMntmNewMenuItem_11());
+			mnNewMenu_3.add(getMntmNewMenuItem_12());
+		}
+		return mnNewMenu_3;
+	}
+	private JMenuItem getMntmNewMenuItem_9() {
+		if (mntmNewMenuItem_9 == null) {
+			mntmNewMenuItem_9 = new JMenuItem("Properties");
+			mntmNewMenuItem_9.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					PropertiesFrame panel = new PropertiesFrame();
+					contentPane.add(panel);
+					panel.toFront();
+				}
+			});
+			mntmNewMenuItem_9.setBackground(new Color(154, 205, 50));
+			mntmNewMenuItem_9.setForeground(new Color(255, 255, 255));
+			mntmNewMenuItem_9.setFont(new Font("≈∏¿Ã∆˜_Ω∫≈Ë B", Font.BOLD, 18));
+			mntmNewMenuItem_9.setOpaque(true);
+		}
+		return mntmNewMenuItem_9;
+	}
+	private JMenuItem getMntmNewMenuItem_10() {
+		if (mntmNewMenuItem_10 == null) {
+			mntmNewMenuItem_10 = new JMenuItem("TreeSet");
+			mntmNewMenuItem_10.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					TreeSetFrame panel = new TreeSetFrame();
+					contentPane.add(panel);
+					panel.toFront();
+				}
+			});
+			mntmNewMenuItem_10.setBackground(new Color(154, 205, 50));
+			mntmNewMenuItem_10.setForeground(new Color(255, 255, 255));
+			mntmNewMenuItem_10.setFont(new Font("≈∏¿Ã∆˜_Ω∫≈Ë B", Font.BOLD, 18));
+			mntmNewMenuItem_10.setOpaque(true);
+		}
+		return mntmNewMenuItem_10;
+	}
+	private JMenuItem getMntmNewMenuItem_11() {
+		if (mntmNewMenuItem_11 == null) {
+			mntmNewMenuItem_11 = new JMenuItem("Stack");
+			mntmNewMenuItem_11.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					StackFrame panel = new StackFrame();
+					contentPane.add(panel);
+					panel.toFront();
+				}
+			});
+			mntmNewMenuItem_11.setForeground(new Color(255, 255, 255));
+			mntmNewMenuItem_11.setFont(new Font("≈∏¿Ã∆˜_Ω∫≈Ë B", Font.BOLD, 18));
+			mntmNewMenuItem_11.setBackground(new Color(154, 205, 50));
+			mntmNewMenuItem_11.setOpaque(true);
+		}
+		return mntmNewMenuItem_11;
+	}
+	private JMenuItem getMntmNewMenuItem_12() {
+		if (mntmNewMenuItem_12 == null) {
+			mntmNewMenuItem_12 = new JMenuItem("Queue");
+			mntmNewMenuItem_12.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					QueueFrame panel = new QueueFrame();
+					contentPane.add(panel);
+					panel.toFront();
+				}
+			});
+			mntmNewMenuItem_12.setOpaque(true);
+			mntmNewMenuItem_12.setBackground(new Color(154, 205, 50));
+			mntmNewMenuItem_12.setFont(new Font("≈∏¿Ã∆˜_Ω∫≈Ë B", Font.BOLD, 18));
+			mntmNewMenuItem_12.setForeground(new Color(255, 255, 255));
+		}
+		return mntmNewMenuItem_12;
+	}
+	private JMenuItem getMntmNewMenuItem_13() {
+		if (mntmNewMenuItem_13 == null) {
+			mntmNewMenuItem_13 = new JMenuItem("TreeMap");
+			mntmNewMenuItem_13.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					TreeMapFrame panel = new TreeMapFrame();
+					contentPane.add(panel);
+					panel.toFront();
+				}
+			});
+			mntmNewMenuItem_13.setOpaque(true);
+			mntmNewMenuItem_13.setBackground(new Color(154, 205, 50));
+			mntmNewMenuItem_13.setFont(new Font("≈∏¿Ã∆˜_Ω∫≈Ë B", Font.BOLD, 18));
+			mntmNewMenuItem_13.setForeground(new Color(255, 255, 255));
+		}
+		return mntmNewMenuItem_13;
 	}
 }

@@ -24,6 +24,7 @@ public class ScoreInput extends JInternalFrame {
 	private JButton btnNewButton;
 	private JLabel status;
 	private JSeparator separator;
+	 MemberMain mm;
 
 	/**
 	 * Launch the application.
@@ -58,10 +59,20 @@ public class ScoreInput extends JInternalFrame {
 
 	}
 
-	public ScoreInput(Map<String, List<ScoreVo>> map) {
+	public ScoreInput(Map<String, List<ScoreVo>> map, MemberMain mm) {
 		this();
 		this.map = map;
-		
+		this.mm = mm;
+	}
+	
+	public void sync() { // 성적이 추가되면 자동으로 조회 프레임의 내용 수정
+		Object[] obj = mm.getContentPane().getComponents();
+		for(int i=0; i<obj.length; i++) {
+			if(obj[i] instanceof ScoreSearch) {
+				ScoreSearch ss = (ScoreSearch)obj[i];
+				ss.btnFind.doClick();
+			}
+		}
 	}
 	
 	private JLabel getLblNewLabel() {
@@ -109,6 +120,7 @@ public class ScoreInput extends JInternalFrame {
 					boolean b = dao.insert(vo);
 					if(b) {
 						status.setText("데이터가 저장되었습니다.");
+						sync();
 					} else {
 						status.setText("저장 중 오류가 발생했습니다.");
 					}
