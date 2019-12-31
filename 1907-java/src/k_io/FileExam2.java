@@ -18,6 +18,11 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 
 public class FileExam2 extends JFrame {
+	
+	static String idCheck = "\\w{4,10}";
+	static String pwdCheck = "[\\d\\w!&]{4,10}";
+	static String nameCheck = "[ê°€-í—¿]{2,20}";
+	static String phoneCheck = "\\d{2,3}-\\d{3,4}-\\d{4}";
 
 	private JDesktopPane contentPane;
 	private JMenuBar menuBar;
@@ -78,7 +83,7 @@ public class FileExam2 extends JFrame {
 			mnNewMenu.setForeground(new Color(255, 255, 255));
 			mnNewMenu.setOpaque(true);
 			mnNewMenu.setBackground(new Color(153, 102, 204));
-			mnNewMenu.setFont(new Font("Å¸ÀÌÆ÷_½Ö¹®µ¿ B", Font.BOLD, 18));
+			mnNewMenu.setFont(new Font("íƒ€ì´í¬_ìŒë¬¸ë™ B", Font.BOLD, 18));
 			mnNewMenu.add(getMntmNewMenuItem());
 		}
 		return mnNewMenu;
@@ -86,7 +91,7 @@ public class FileExam2 extends JFrame {
 	private JMenuItem getMntmNewMenuItem() {
 		if (mntmNewMenuItem == null) {
 			mntmNewMenuItem = new JMenuItem("\uD30C\uC77C\uBCF5\uC0AC");
-			mntmNewMenuItem.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
+			mntmNewMenuItem.setFont(new Font("1í›ˆìƒˆë§ˆì„ìš´ë™ R", Font.BOLD, 15));
 			mntmNewMenuItem.setForeground(new Color(255, 255, 255));
 			mntmNewMenuItem.setOpaque(true);
 			mntmNewMenuItem.setBackground(new Color(153, 102, 204));
@@ -106,7 +111,7 @@ public class FileExam2 extends JFrame {
 			mnNewMenu_1.setForeground(Color.WHITE);
 			mnNewMenu_1.setOpaque(true);
 			mnNewMenu_1.setBackground(new Color(153, 102, 204));
-			mnNewMenu_1.setFont(new Font("Å¸ÀÌÆ÷_½Ö¹®µ¿ B", Font.BOLD, 18));
+			mnNewMenu_1.setFont(new Font("íƒ€ì´í¬_ìŒë¬¸ë™ B", Font.BOLD, 18));
 			mnNewMenu_1.add(getMntmNewMenuItem_1());
 			mnNewMenu_1.add(getMntmNewMenuItem_2());
 			mnNewMenu_1.add(getMntmNewMenuItem_3());
@@ -133,7 +138,7 @@ public class FileExam2 extends JFrame {
 			mntmNewMenuItem_1.setOpaque(true);
 			mntmNewMenuItem_1.setBackground(new Color(153, 102, 204));
 			mntmNewMenuItem_1.setForeground(Color.WHITE);
-			mntmNewMenuItem_1.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
+			mntmNewMenuItem_1.setFont(new Font("1í›ˆìƒˆë§ˆì„ìš´ë™ R", Font.BOLD, 15));
 		}
 		return mntmNewMenuItem_1;
 	}
@@ -146,7 +151,7 @@ public class FileExam2 extends JFrame {
 					if(frame instanceof TextEditor) {
 						TextEditor te = (TextEditor)frame;
 						
-						// »õ·Î¸¸µé±â¸¦ ÇÑ °æ¿ì¿£ TextEditorÀÇ fileNameÀÌ null
+						// ìƒˆë¡œë§Œë“¤ê¸°ë¥¼ í•œ ê²½ìš°ì—” TextEditorì˜ fileNameì´ null
 						if(te.fileName == null) {
 							JFileChooser fc = new JFileChooser();
 							int flag = fc.showSaveDialog(FileExam2.this);
@@ -155,16 +160,16 @@ public class FileExam2 extends JFrame {
 								te.fileName = fc.getSelectedFile().getPath();
 								te.setTitle(te.fileName);
 							}else {
-								te.getStatus().setText("ÆÄÀÏ ÀúÀå ÀÛ¾÷ÀÌ Ãë¼ÒµÇ¾ú½À´Ï´Ù.");
+								te.getStatus().setText("íŒŒì¼ ì €ì¥ ì‘ì—…ì´ ì·¨ì†Œë˜ì—ˆìŠµë‹ˆë‹¤.");
 								return;
 							}
 						}
 						
 						boolean b = te.save();
 						if(b) {
-							te.getStatus().setText("ÆÄÀÏÀÌ Á¤»óÀûÀ¸·Î ÀúÀåµÊ");
+							te.getStatus().setText("íŒŒì¼ì´ ì •ìƒì ìœ¼ë¡œ ì €ì¥ë¨");
 						}else {
-							te.getStatus().setText("ÆÄÀÏ ÀúÀåÁß ¿À·ù ¹ß»ı");
+							te.getStatus().setText("íŒŒì¼ ì €ì¥ì¤‘ ì˜¤ë¥˜ ë°œìƒ");
 						}
 					}
 				}
@@ -172,7 +177,7 @@ public class FileExam2 extends JFrame {
 			mntmNewMenuItem_2.setOpaque(true);
 			mntmNewMenuItem_2.setBackground(new Color(153, 102, 204));
 			mntmNewMenuItem_2.setForeground(Color.WHITE);
-			mntmNewMenuItem_2.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
+			mntmNewMenuItem_2.setFont(new Font("1í›ˆìƒˆë§ˆì„ìš´ë™ R", Font.BOLD, 15));
 		}
 		return mntmNewMenuItem_2;
 	}
@@ -189,7 +194,7 @@ public class FileExam2 extends JFrame {
 			mntmNewMenuItem_3.setOpaque(true);
 			mntmNewMenuItem_3.setBackground(new Color(153, 102, 204));
 			mntmNewMenuItem_3.setForeground(Color.WHITE);
-			mntmNewMenuItem_3.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
+			mntmNewMenuItem_3.setFont(new Font("1í›ˆìƒˆë§ˆì„ìš´ë™ R", Font.BOLD, 15));
 		}
 		return mntmNewMenuItem_3;
 	}
@@ -197,7 +202,7 @@ public class FileExam2 extends JFrame {
 		if (mnNewMenu_2 == null) {
 			mnNewMenu_2 = new JMenu("\uD68C\uC6D0\uAD00\uB9AC");
 			mnNewMenu_2.setForeground(Color.WHITE);
-			mnNewMenu_2.setFont(new Font("Å¸ÀÌÆ÷_½Ö¹®µ¿ B", Font.BOLD, 18));
+			mnNewMenu_2.setFont(new Font("íƒ€ì´í¬_ìŒë¬¸ë™ B", Font.BOLD, 18));
 			mnNewMenu_2.setOpaque(true);
 			mnNewMenu_2.setBackground(new Color(153, 102, 204));
 			mnNewMenu_2.add(getMntmNewMenuItem_4());
@@ -216,7 +221,7 @@ public class FileExam2 extends JFrame {
 					panel.toFront();
 				}
 			});
-			mntmNewMenuItem_4.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
+			mntmNewMenuItem_4.setFont(new Font("1í›ˆìƒˆë§ˆì„ìš´ë™ R", Font.BOLD, 15));
 			mntmNewMenuItem_4.setForeground(Color.WHITE);
 			mntmNewMenuItem_4.setOpaque(true);
 			mntmNewMenuItem_4.setBackground(new Color(153, 102, 204));
@@ -234,7 +239,7 @@ public class FileExam2 extends JFrame {
 				}
 			});
 			mntmNewMenuItem_5.setForeground(Color.WHITE);
-			mntmNewMenuItem_5.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
+			mntmNewMenuItem_5.setFont(new Font("1í›ˆìƒˆë§ˆì„ìš´ë™ R", Font.BOLD, 15));
 			mntmNewMenuItem_5.setOpaque(true);
 			mntmNewMenuItem_5.setBackground(new Color(153, 102, 204));
 		}
@@ -250,7 +255,7 @@ public class FileExam2 extends JFrame {
 					panel.toFront();
 				}
 			});
-			mntmNewMenuItem_6.setFont(new Font("1ÈÆ»õ¸¶À»¿îµ¿ R", Font.BOLD, 15));
+			mntmNewMenuItem_6.setFont(new Font("1í›ˆìƒˆë§ˆì„ìš´ë™ R", Font.BOLD, 15));
 			mntmNewMenuItem_6.setForeground(Color.WHITE);
 			mntmNewMenuItem_6.setOpaque(true);
 			mntmNewMenuItem_6.setBackground(new Color(153, 102, 204));

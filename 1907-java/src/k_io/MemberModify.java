@@ -18,8 +18,9 @@ import java.awt.SystemColor;
 import javax.swing.JSeparator;
 
 public class MemberModify extends JInternalFrame {
-	int index;		
+	int index = -1;		
 	List<MemberVo> list;
+	
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
 	private JLabel lblNewLabel_2;
@@ -83,15 +84,10 @@ public class MemberModify extends JInternalFrame {
 		phone.setText("");
 		
 		String find = mId.getText();
-		for(int i=0; i<list.size(); i++) {
-			MemberVo vo = list.get(i);
-			if(vo.getmId().equals(find)) {
-				index = i;
-				break;
-			} // end if
-		} // end for		
-		if(index>=0) {
-			MemberVo vo = list.get(index);
+		MemberDao dao = new MemberDao();
+		MemberVo vo = dao.search(find);
+		
+		if(vo != null) {
 			pwd.setText(vo.getPwd());
 			mName.setText(vo.getmName());
 			phone.setText(vo.getPhone());
@@ -108,23 +104,39 @@ public class MemberModify extends JInternalFrame {
 	}
 	
 	public void modify() { // 수정 버튼	
-		MemberVo vo = list.get(index);
-
-		vo.setPwd(pwd.getText());
-		vo.setmName(mName.getText());
-		vo.setPhone(phone.getText());
-				
-		status.setText("자료가 수정되었습니다.");
+	  String id = mId.getText();
+	  String p = pwd.getText();
+	  String n = mName.getText();
+	  String ph = phone.getText();
+	  
+	  boolean flag =
+				Pattern.matches(FileExam2.idCheck, id)&&
+				Pattern.matches(FileExam2.pwdCheck, p)&&
+				Pattern.matches(FileExam2.nameCheck, n)&&
+				Pattern.matches(FileExam2.phoneCheck, ph);
+	  
+	  if(flag) {
+		  MemberVo vo = new MemberVo(id,p,n,ph);
+		  MemberDao dao = new MemberDao();
+		  boolean b = dao.modify(vo);
+		  if(b) {
+			  status.setText("자료가 수정되었습니다.");		  
+		  }else {
+			  status.setText("저장중 오류 발생");
+	        }
+	  	 }else {
+		     status.setText("입력자료를 확인해 주세요.");
+	  }			
 	}
 	
 	public void delete() { // 삭제 버튼
-		if(index >=0) {
-		list.remove(index);
-		
+		String findMid = mId.getText();
+		MemberDao dao = new MemberDao();
+		boolean b = dao.delete(findMid);
+		if(b) {
 		status.setBackground(Color.BLUE);
 		status.setText("자료가 삭제되었습니다.");
 		
-		index = -1;
 		pwd.setText("");
 		mName.setText("");
 		phone.setText("");
@@ -133,13 +145,8 @@ public class MemberModify extends JInternalFrame {
 		mId.selectAll();
 		} else {
 			status.setBackground(Color.RED);
-			status.setText("먼저 검색해 주세요");
+			status.setText("자료 삭제중 오류발생");
 		}
-	}
-	
-	public MemberModify(List<MemberVo> list) {
-		this();
-		this.list = list;
 	}
 
 	private JLabel getLblNewLabel() {
@@ -221,7 +228,7 @@ public class MemberModify extends JInternalFrame {
 		if (phone == null) {
 			phone = new JTextField();
 			phone.setFont(new Font("1훈새마을운동 R", Font.BOLD, 15));
-			phone.setBounds(86, 111, 105, 21);
+			phone.setBounds(86, 111, 145, 21);
 			phone.setColumns(10);
 		}
 		return phone;

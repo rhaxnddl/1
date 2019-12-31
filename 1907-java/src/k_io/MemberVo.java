@@ -21,7 +21,9 @@ public class MemberVo implements Serializable{ // 병렬화 구현
 
 	@Override
 	public int hashCode() {		
-		return mId.hashCode() + phone.hashCode();
+		return mId.hashCode() + phone.hashCode(); 
+		// 아이디와 연락처가 동일하면 같은 객체이다.
+	   // 다른 값들은 다르고, 아이디와 연락처가 같다면 동일한 객체라고 인식 => 값이 같다는 의미는 아님
 	}
 	
 	@Override

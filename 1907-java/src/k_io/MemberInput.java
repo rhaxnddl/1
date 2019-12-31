@@ -3,6 +3,7 @@ package k_io;
 
 import java.awt.EventQueue;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -17,7 +18,6 @@ import java.awt.SystemColor;
 import javax.swing.JSeparator;
 
 public class MemberInput extends JInternalFrame {
-	List<MemberVo> list;
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
 	private JLabel lblNewLabel_2;
@@ -70,20 +70,28 @@ public class MemberInput extends JInternalFrame {
 		getContentPane().add(getLblNewLabel_4());
 		getContentPane().add(getSeparator_1());
 	}
-	public MemberInput(List<MemberVo> list) {
-		this();
-		this.list = list;
-	}
-	
+
 	public void input() {
 		String id = mId.getText();
 		String p = pwd.getText();
 		String n = mName.getText();
 		String ph = phone.getText();
-		
+				
+		boolean flag =
+				Pattern.matches(FileExam2.idCheck, id)&&
+				Pattern.matches(FileExam2.pwdCheck, p)&&
+				Pattern.matches(FileExam2.nameCheck, n)&&
+				Pattern.matches(FileExam2.phoneCheck, ph);
+				
+		if(!flag) {
+			status.setText("데이터에 오류가 있습니다..");
+			return;
+		}
 		MemberVo vo = new MemberVo(id,p,n,ph);
-		this.list.add(vo);
+		MemberDao dao = new MemberDao();
+		boolean b = dao.insert(vo);		
 		
+		if(b) {
 		pwd.setText("");
 		mName.setText("");
 		phone.setText("");
@@ -91,7 +99,10 @@ public class MemberInput extends JInternalFrame {
 		mId.requestFocus();
 		mId.selectAll();
 		
-		status.setText("회원정보가 추가 입력되었습니다.(" + list.size() + " 건 )");
+		status.setText("회원정보가 추가 입력되었습니다.");
+		} else {
+			status.setText("데이터 저장중 오류가 발생되었습니다.");
+		}
 	}
 	
 	private JLabel getLblNewLabel() {
@@ -147,7 +158,7 @@ public class MemberInput extends JInternalFrame {
 			btnNewButton = new JButton("\uC800\uC7A5");
 			btnNewButton.setForeground(new Color(255, 255, 255));
 			btnNewButton.setBackground(new Color(153, 102, 204));
-			btnNewButton.setFont(new Font("1훈새마을운동 R", Font.BOLD, 15));
+			btnNewButton.setFont(new Font("타이포_스톰 B", Font.BOLD, 25));
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) { // 저장버튼
 					input();
@@ -188,7 +199,7 @@ public class MemberInput extends JInternalFrame {
 		if (phone == null) {
 			phone = new JTextField();
 			phone.setFont(new Font("1훈새마을운동 R", Font.BOLD, 15));
-			phone.setBounds(149, 151, 116, 21);
+			phone.setBounds(149, 151, 146, 21);
 			phone.setColumns(10);
 		}
 		return phone;
