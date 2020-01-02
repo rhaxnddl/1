@@ -1,4 +1,4 @@
-
+//1
 package k_io;
 
 import java.awt.Rectangle;
