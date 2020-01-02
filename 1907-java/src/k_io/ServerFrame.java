@@ -32,6 +32,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 
 public class ServerFrame extends JFrame implements Runnable{
 
@@ -145,7 +146,12 @@ public class ServerFrame extends JFrame implements Runnable{
 		cd.setmId("SERVER");
 		cd.setCommand(ChattData.MESSAGE);
 		cd.setMessage(message.getText());
+		if(comboBox.getSelectedIndex() == 0) { // 전체
 		sendAll(cd);
+		} else {
+			int[] indexs = getList().getSelectedIndices();
+			sendAll(cd, indexs);
+		}
 		
 		message.setText("");
 	}
@@ -159,10 +165,17 @@ public class ServerFrame extends JFrame implements Runnable{
 				
 			}
 		}
-	}
-	
-	public void SendAll(int[] to) { // 귓속말
-		
+	}	
+	public void sendAll(ChattData cd,int[] to) { // 귓속말
+		for(int i=0; i<to.length; i++) {
+			ServerThread st = clients.get(to[i]);
+			try {
+			st.oos.writeObject(cd);
+			st.oos.flush();
+			}catch(IOException e) {
+				
+			}
+		}
 	}
 	
 	// 1. 모든 유저들에게 서버 종료를 통보 (GETOUT)
