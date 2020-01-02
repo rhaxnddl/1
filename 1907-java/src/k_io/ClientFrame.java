@@ -134,6 +134,25 @@ public class ClientFrame extends JFrame implements Runnable{ // ºÎ¸ð, ÀÚ½Ä°£ÀÇ °
 		ct.oos.flush();
 	}
 	
+	// 1. ¼­¹ö¿¡°Ô LOGOUTÅëº¸
+	// 2. ÀÚ½ÅÀÇ À¯Àú¸ñ·ÏÀ» ¸ðµÎ Á¦°Å
+	// 3. ClientThread¸¦ Á¾·á
+	public void logout() {
+		ChattData cd = new ChattData();
+		cd.setmId(tmId.getText());
+		cd.setCommand(ChattData.LOGOUT);
+		try {
+		ct.oos.writeObject(cd);
+		ct.oos.flush(); // 1¹ø
+		model.clear(); // 2¹ø
+		ct.stop();
+		socket.close();
+		socket = null; // 3¹ø
+		} catch(Exception ex) {
+			
+		}
+	}
+	
 	public void send() {
 		try {
 			String mid = tmId.getText();
@@ -242,7 +261,12 @@ public class ClientFrame extends JFrame implements Runnable{ // ºÎ¸ð, ÀÚ½Ä°£ÀÇ °
 	}
 	private JButton getBtnNewButton_1() {
 		if (btnNewButton_1 == null) {
-			btnNewButton_1 = new JButton("\uD574\uC81C");
+			btnNewButton_1 = new JButton("\uC885\uB8CC");
+			btnNewButton_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					logout();
+				}
+			});
 			btnNewButton_1.setBounds(392, 36, 67, 27);
 		}
 		return btnNewButton_1;
@@ -256,7 +280,7 @@ public class ClientFrame extends JFrame implements Runnable{ // ºÎ¸ð, ÀÚ½Ä°£ÀÇ °
 		}
 		return scrollPane;
 	}
-	private JList getList() {
+	public JList getList() {
 		if (list == null) {
 			list = new JList();
 			list.setModel(model);

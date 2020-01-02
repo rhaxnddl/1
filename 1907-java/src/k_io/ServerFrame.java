@@ -28,6 +28,10 @@ import javax.swing.JTextPane;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class ServerFrame extends JFrame implements Runnable{
 
@@ -54,7 +58,7 @@ public class ServerFrame extends JFrame implements Runnable{
 	private JButton btnNewButton_2;
 	private JButton btnNewButton_3;
 	private JComboBox comboBox;
-	private JTextField textField_2;
+	private JTextField message;
 	private JButton btnNewButton_4;
 	private JLabel lblNewLabel_3;
 
@@ -78,6 +82,12 @@ public class ServerFrame extends JFrame implements Runnable{
 	 * Create the frame.
 	 */
 	public ServerFrame() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				serverStop();
+			}
+		});
 		setTitle("\uCC44\uD305 \uC11C\uBC84");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 531, 461);
@@ -96,7 +106,7 @@ public class ServerFrame extends JFrame implements Runnable{
 		contentPane.add(getBtnNewButton_2());
 		contentPane.add(getBtnNewButton_3());
 		contentPane.add(getComboBox());
-		contentPane.add(getTextField_2());
+		contentPane.add(getMessage());
 		contentPane.add(getBtnNewButton_4());
 	}
 	
@@ -105,22 +115,22 @@ public class ServerFrame extends JFrame implements Runnable{
 		try {
 			int p = Integer.parseInt(port.getText());
 			server = new ServerSocket(p);
-			String html = "<font size='5' color='#0000ff'>¼­¹ö°¡ ½ÃÀÛµÊ</font>";
+			String html = "<font size='5' color='#0000ff'>ì„œë²„ê°€ ì‹œì‘ë¨</font>";
 			kit.insertHTML(doc, doc.getLength(), html, 0, 0, null);
 			
 			
 			while(true) {
-				html = "[Å¬¶óÀÌ¾ğÆ® Á¢¼Ó ´ë±âÁß]";
+				html = "[í´ë¼ì´ì–¸íŠ¸ ì ‘ì† ëŒ€ê¸°ì¤‘]";
 				kit.insertHTML(doc, doc.getLength(), html, 0, 0, null);
 				
-				Socket clientSocket = server.accept();// Å¬¶óÀÌ¾ğÆ®°¡ Á¢¼ÓµÉ¶§±îÁö ´ë±â, Á¢¼Ó ÈÄ ¾Æ·¡ ÄÚµå Ãâ·Â // µ¥ÀÌÅÍ¸¦ Á¢¼Ó¸¸ ÇÏ´Â ½º·¹µå
+				Socket clientSocket = server.accept();// í´ë¼ì´ì–¸íŠ¸ê°€ ì ‘ì†ë ë•Œê¹Œì§€ ëŒ€ê¸°, ì ‘ì† í›„ ì•„ë˜ ì½”ë“œ ì¶œë ¥ // ë°ì´í„°ë¥¼ ì ‘ì†ë§Œ í•˜ëŠ” ìŠ¤ë ˆë“œ
 				ServerThread st = new ServerThread(ServerFrame.this, clientSocket);
 				st.start();
 				clients.add(st);
 				
 				InetSocketAddress addr = (InetSocketAddress)clientSocket.getRemoteSocketAddress();
 				html = "<div style='border:1px solid #ff0000;padding:5px;width:150px'>"
-						+ addr.getAddress().getHostAddress() + " ´ÔÀÌ Á¢¼ÓÇÔ" + "</div>";
+						+ addr.getAddress().getHostAddress() + " ë‹˜ì´ ì ‘ì†í•¨" + "</div>";
 				kit.insertHTML(doc, doc.getLength(), html, 0, 0, null);
 				
 				textPane.scrollRectToVisible(new Rectangle(0, textPane.getHeight()+100, 1, 1));
@@ -130,10 +140,58 @@ public class ServerFrame extends JFrame implements Runnable{
 		}
 	}
 	
+	public void send() { // enter, ì „ì†¡ ë²„í‹
+		ChattData cd = new ChattData();
+		cd.setmId("SERVER");
+		cd.setCommand(ChattData.MESSAGE);
+		cd.setMessage(message.getText());
+		sendAll(cd);
+		
+		message.setText("");
+	}
+	
+	public void sendAll(ChattData cd) {
+		for(ServerThread st : clients) {
+			try {
+			st.oos.writeObject(cd);
+			st.oos.flush();
+			} catch(Exception ex) {
+				
+			}
+		}
+	}
+	
+	public void SendAll(int[] to) { // ê·“ì†ë§
+		
+	}
+	
+	// 1. ëª¨ë“  ìœ ì €ë“¤ì—ê²Œ ì„œë²„ ì¢…ë£Œë¥¼ í†µë³´ (GETOUT)
+	// 2. clientsì˜ ServerThreadë¥¼ ì¢…ë£Œ
+	// 3. ì ‘ì†ì ëª©ë¡ì„ ëª¨ë‘ ì¢…ë£Œ
+	// 4. serverSocket ì¢…ë£Œ
+	public void serverStop() {
+		ChattData cd = new ChattData();
+		cd.setCommand(ChattData.GETOUT);
+		cd.setmId("SERVER");
+		sendAll(cd); // 1ë²ˆ
+		
+		clients.clear();
+		clients = new ArrayList<ServerThread>(); // 2ë²ˆ
+		
+		model.clear();
+		
+		try {
+		server.close();
+		server = null;
+		} catch(Exception ex) {
+			
+		}
+	}
+	
 	private JLabel getLblNewLabel() {
 		if (lblNewLabel == null) {
 			lblNewLabel = new JLabel("IP");
-			lblNewLabel.setFont(new Font("±¼¸²", Font.PLAIN, 18));
+			lblNewLabel.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 18));
 			lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			lblNewLabel.setBounds(12, 10, 28, 15);
 		}
@@ -158,7 +216,7 @@ public class ServerFrame extends JFrame implements Runnable{
 		if (lblNewLabel_1 == null) {
 			lblNewLabel_1 = new JLabel("PORT");
 			lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-			lblNewLabel_1.setFont(new Font("±¼¸²", Font.PLAIN, 18));
+			lblNewLabel_1.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 18));
 			lblNewLabel_1.setBounds(158, 10, 57, 15);
 		}
 		return lblNewLabel_1;
@@ -181,7 +239,7 @@ public class ServerFrame extends JFrame implements Runnable{
 					t.start();					
 				}
 			});
-			btnNewButton.setFont(new Font("±¼¸²", Font.PLAIN, 15));
+			btnNewButton.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 15));
 			btnNewButton.setBounds(352, 8, 69, 20);
 		}
 		return btnNewButton;
@@ -189,7 +247,12 @@ public class ServerFrame extends JFrame implements Runnable{
 	private JButton getBtnNewButton_1() {
 		if (btnNewButton_1 == null) {
 			btnNewButton_1 = new JButton("\uC885\uB8CC");
-			btnNewButton_1.setFont(new Font("±¼¸²", Font.PLAIN, 15));
+			btnNewButton_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					serverStop();
+				}
+			});
+			btnNewButton_1.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 15));
 			btnNewButton_1.setBounds(433, 6, 69, 23);
 		}
 		return btnNewButton_1;
@@ -213,7 +276,7 @@ public class ServerFrame extends JFrame implements Runnable{
 	private JLabel getLblNewLabel_2() {
 		if (lblNewLabel_2 == null) {
 			lblNewLabel_2 = new JLabel("\uC811\uC18D\uC790 \uBAA9\uB85D");
-			lblNewLabel_2.setFont(new Font("±¼¸²", Font.PLAIN, 15));
+			lblNewLabel_2.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 15));
 			lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		}
 		return lblNewLabel_2;
@@ -255,22 +318,35 @@ public class ServerFrame extends JFrame implements Runnable{
 			comboBox = new JComboBox();
 			comboBox.setBounds(12, 392, 152, 21);
 			
-			comboBox.addItem("ÀüÃ¼");
-			comboBox.addItem("±Ó¼Ó¸»");
+			comboBox.addItem("ì „ì²´");
+			comboBox.addItem("ê·“ì†ë§");
 		}
 		return comboBox;
 	}
-	private JTextField getTextField_2() {
-		if (textField_2 == null) {
-			textField_2 = new JTextField();
-			textField_2.setBounds(176, 392, 260, 21);
-			textField_2.setColumns(10);
+	private JTextField getMessage() {
+		if (message == null) {
+			message = new JTextField();
+			message.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyReleased(KeyEvent e) {
+					if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+					send();
+					}
+				}
+			});
+			message.setBounds(176, 392, 260, 21);
+			message.setColumns(10);
 		}
-		return textField_2;
+		return message;
 	}
 	private JButton getBtnNewButton_4() {
 		if (btnNewButton_4 == null) {
 			btnNewButton_4 = new JButton("\uC804\uC1A1");
+			btnNewButton_4.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					send();
+				}
+			});
 			btnNewButton_4.setBounds(440, 391, 62, 23);
 		}
 		return btnNewButton_4;
@@ -278,7 +354,7 @@ public class ServerFrame extends JFrame implements Runnable{
 	private JLabel getLblNewLabel_3() {
 		if (lblNewLabel_3 == null) {
 			lblNewLabel_3 = new JLabel("\uBA54\uC138\uC9C0");
-			lblNewLabel_3.setFont(new Font("±¼¸²", Font.PLAIN, 15));
+			lblNewLabel_3.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 15));
 		}
 		return lblNewLabel_3;
 	}

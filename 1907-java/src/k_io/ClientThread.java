@@ -41,13 +41,34 @@ public class ClientThread extends Thread{
 					for(int i=0; i<cd.getUsers().size(); i++) {
 						String mId = cd.getUsers().get(i);
 						frame.model.addElement(mId);
+						// 목록이 갱신되지 않는 경우
+						frame.getList().updateUI();
+						frame.getList().paint(frame.getList().getGraphics()); // 클라이언트 리스트가 가지고 있는 그래픽을 가지고 가서 페인트를 다시 해라 , 새롭게 다시 그려라 
+						
 					}
 					break;
+				case ChattData.LOGOUT:
+					frame.model.removeElement(cd.getmId());
+					break;
+					
+				case ChattData.GETOUT:
+					frame.model.clear();
+					throw new Exception();
 				}
 				frame.getTextPane().scrollRectToVisible(new Rectangle(0, frame.getTextPane().getHeight()+100, 1, 1));
 			}
 		}catch(Exception ex) {
-			
+			try {
+				ois.close();
+				oos.close();
+				socket.close();
+				
+				ois = null;
+				oos = null;
+				socket = null;
+			} catch(Exception ex2) {
+				
+			}
 		}
 	}
 }
