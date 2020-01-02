@@ -220,7 +220,7 @@ public class ClientFrame extends JFrame implements Runnable{ // 부모, 자식간의 �
 		}
 		return lblNewLabel_2;
 	}
-	private JTextField getTmId() {
+	public JTextField getTmId() {
 		if (tmId == null) {
 			tmId = new JTextField();
 			tmId.setText("Lee");

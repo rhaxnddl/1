@@ -302,6 +302,21 @@ public class ServerFrame extends JFrame implements Runnable{
 	private JButton getBtnNewButton_2() {
 		if (btnNewButton_2 == null) {
 			btnNewButton_2 = new JButton("\uAC15\uD1F4");
+			btnNewButton_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					Object[] indexs = getList().getSelectedValues();
+					ChattData cd = new ChattData();
+					cd.setCommand(ChattData.GETOUT);
+					cd.setmId("SERVER");
+					List<String> users = new ArrayList<String>();
+					for(int i=0; i<indexs.length; i++) {
+						users.add((String)indexs[i]);
+					}
+					cd.setUsers(users);
+					sendAll(cd);					
+				}
+			});
 			btnNewButton_2.setBounds(12, 359, 73, 23);
 		}
 		return btnNewButton_2;
@@ -309,6 +324,11 @@ public class ServerFrame extends JFrame implements Runnable{
 	private JButton getBtnNewButton_3() {
 		if (btnNewButton_3 == null) {
 			btnNewButton_3 = new JButton("\uD574\uC81C");
+			btnNewButton_3.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					getList().clearSelection();
+				}
+			});
 			btnNewButton_3.setBounds(88, 359, 73, 23);
 		}
 		return btnNewButton_3;

@@ -43,7 +43,7 @@ public class ClientThread extends Thread{
 						String mId = cd.getUsers().get(i);
 						frame.model.addElement(mId);
 						// 목록이 갱신되지 않는 경우
-						frame.getList().updateUI();
+						//frame.getList().updateUI();
 						frame.getList().paint(frame.getList().getGraphics()); // 클라이언트 리스트가 가지고 있는 그래픽을 가지고 가서 페인트를 다시 해라 , 새롭게 다시 그려라 
 						
 					}
@@ -53,8 +53,20 @@ public class ClientThread extends Thread{
 					break;
 					
 				case ChattData.GETOUT:
-					frame.model.clear();
-					throw new Exception();
+					// 서버의 중지 or 특정유저의 강퇴
+					if(cd.getUsers() == null) { // 서버의 중지
+						frame.model.clear();
+						throw new Exception();
+					} else { // 강퇴
+						for(String mId : cd.getUsers()) {
+							if(mId.equals(frame.getTmId().getText())) {
+								frame.model.clear();
+								throw new Exception();
+							} else {
+								frame.model.removeElement(mId);
+							}
+						}
+					}
 				}
 				frame.getTextPane().scrollRectToVisible(new Rectangle(0, frame.getTextPane().getHeight()+100, 1, 1));
 			}
