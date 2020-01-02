@@ -33,6 +33,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
+import java.awt.Color;
 
 public class ServerFrame extends JFrame implements Runnable{
 
@@ -93,6 +94,7 @@ public class ServerFrame extends JFrame implements Runnable{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 531, 461);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 153, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -116,9 +118,9 @@ public class ServerFrame extends JFrame implements Runnable{
 		try {
 			int p = Integer.parseInt(port.getText());
 			server = new ServerSocket(p);
+			
 			String html = "<font size='5' color='#0000ff'>서버가 시작됨</font>";
 			kit.insertHTML(doc, doc.getLength(), html, 0, 0, null);
-			
 			
 			while(true) {
 				html = "[클라이언트 접속 대기중]";
@@ -204,7 +206,9 @@ public class ServerFrame extends JFrame implements Runnable{
 	private JLabel getLblNewLabel() {
 		if (lblNewLabel == null) {
 			lblNewLabel = new JLabel("IP");
-			lblNewLabel.setFont(new Font("굴림", Font.PLAIN, 18));
+			lblNewLabel.setOpaque(true);
+			lblNewLabel.setBackground(new Color(255, 102, 0));
+			lblNewLabel.setFont(new Font("타이포_스톰 B", Font.BOLD, 18));
 			lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			lblNewLabel.setBounds(12, 10, 28, 15);
 		}
@@ -213,6 +217,7 @@ public class ServerFrame extends JFrame implements Runnable{
 	private JTextField getTextField() {
 		if (textField == null) {
 			textField = new JTextField();
+			textField.setBackground(new Color(255, 204, 153));
 			textField.setBounds(52, 7, 94, 21);
 			textField.setColumns(10);
 			
@@ -228,8 +233,10 @@ public class ServerFrame extends JFrame implements Runnable{
 	private JLabel getLblNewLabel_1() {
 		if (lblNewLabel_1 == null) {
 			lblNewLabel_1 = new JLabel("PORT");
+			lblNewLabel_1.setOpaque(true);
+			lblNewLabel_1.setBackground(new Color(255, 102, 0));
 			lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-			lblNewLabel_1.setFont(new Font("굴림", Font.PLAIN, 18));
+			lblNewLabel_1.setFont(new Font("타이포_스톰 B", Font.BOLD, 18));
 			lblNewLabel_1.setBounds(158, 10, 57, 15);
 		}
 		return lblNewLabel_1;
@@ -237,36 +244,43 @@ public class ServerFrame extends JFrame implements Runnable{
 	private JTextField getPort() {
 		if (port == null) {
 			port = new JTextField();
+			port.setBackground(new Color(255, 204, 153));
 			port.setText("4444");
 			port.setBounds(224, 7, 116, 21);
 			port.setColumns(10);
 		}
 		return port;
 	}
-	private JButton getBtnNewButton() {
+	public JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("\uC2DC\uC791");
+			btnNewButton.setBackground(new Color(255, 102, 0));
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Thread t = new Thread(ServerFrame.this);
-					t.start();					
+					t.start();	
+					btnNewButton.setEnabled(false);
+					btnNewButton_1.setEnabled(true);
 				}
 			});
-			btnNewButton.setFont(new Font("굴림", Font.PLAIN, 15));
+			btnNewButton.setFont(new Font("배달의민족 주아", Font.BOLD, 15));
 			btnNewButton.setBounds(352, 8, 69, 20);
 		}
 		return btnNewButton;
 	}
-	private JButton getBtnNewButton_1() {
+	public JButton getBtnNewButton_1() {
 		if (btnNewButton_1 == null) {
 			btnNewButton_1 = new JButton("\uC885\uB8CC");
+			btnNewButton_1.setBackground(new Color(255, 102, 0));
 			btnNewButton_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					serverStop();
+					btnNewButton.setEnabled(true);
+					btnNewButton_1.setEnabled(false);
 				}
 			});
-			btnNewButton_1.setFont(new Font("굴림", Font.PLAIN, 15));
-			btnNewButton_1.setBounds(433, 6, 69, 23);
+			btnNewButton_1.setFont(new Font("배달의민족 주아", Font.BOLD, 15));
+			btnNewButton_1.setBounds(433, 6, 69, 22);
 		}
 		return btnNewButton_1;
 	}
@@ -282,6 +296,7 @@ public class ServerFrame extends JFrame implements Runnable{
 	private JList getList() {
 		if (list == null) {
 			list = new JList();
+			list.setBackground(new Color(255, 204, 153));
 			list.setModel(model);
 		}
 		return list;
@@ -289,7 +304,9 @@ public class ServerFrame extends JFrame implements Runnable{
 	private JLabel getLblNewLabel_2() {
 		if (lblNewLabel_2 == null) {
 			lblNewLabel_2 = new JLabel("\uC811\uC18D\uC790 \uBAA9\uB85D");
-			lblNewLabel_2.setFont(new Font("굴림", Font.PLAIN, 15));
+			lblNewLabel_2.setOpaque(true);
+			lblNewLabel_2.setBackground(new Color(255, 102, 0));
+			lblNewLabel_2.setFont(new Font("배달의민족 주아", Font.BOLD, 18));
 			lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		}
 		return lblNewLabel_2;
@@ -306,6 +323,7 @@ public class ServerFrame extends JFrame implements Runnable{
 	public JTextPane getTextPane() {
 		if (textPane == null) {
 			textPane = new JTextPane();
+			textPane.setBackground(new Color(255, 204, 153));
 			textPane.setContentType("text/html");
 			textPane.setEditorKit(kit);
 			textPane.setDocument(doc);
@@ -315,6 +333,8 @@ public class ServerFrame extends JFrame implements Runnable{
 	private JButton getBtnNewButton_2() {
 		if (btnNewButton_2 == null) {
 			btnNewButton_2 = new JButton("\uAC15\uD1F4");
+			btnNewButton_2.setFont(new Font("배달의민족 주아", Font.BOLD, 15));
+			btnNewButton_2.setBackground(new Color(255, 102, 0));
 			btnNewButton_2.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
@@ -327,7 +347,7 @@ public class ServerFrame extends JFrame implements Runnable{
 						users.add((String)indexs[i]);
 					}
 					cd.setUsers(users);
-					sendAll(cd);					
+					sendAll(cd);		
 				}
 			});
 			btnNewButton_2.setBounds(12, 359, 73, 23);
@@ -337,6 +357,8 @@ public class ServerFrame extends JFrame implements Runnable{
 	private JButton getBtnNewButton_3() {
 		if (btnNewButton_3 == null) {
 			btnNewButton_3 = new JButton("\uD574\uC81C");
+			btnNewButton_3.setFont(new Font("배달의민족 주아", Font.BOLD, 15));
+			btnNewButton_3.setBackground(new Color(255, 102, 0));
 			btnNewButton_3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					getList().clearSelection();
@@ -349,6 +371,8 @@ public class ServerFrame extends JFrame implements Runnable{
 	private JComboBox getComboBox() {
 		if (comboBox == null) {
 			comboBox = new JComboBox();
+			comboBox.setFont(new Font("배달의민족 주아", Font.BOLD, 15));
+			comboBox.setBackground(new Color(255, 102, 0));
 			comboBox.setBounds(12, 392, 152, 21);
 			
 			comboBox.addItem("전체");
@@ -359,6 +383,8 @@ public class ServerFrame extends JFrame implements Runnable{
 	private JTextField getMessage() {
 		if (message == null) {
 			message = new JTextField();
+			message.setFont(new Font("배달의민족 주아", Font.PLAIN, 15));
+			message.setBackground(new Color(255, 204, 153));
 			message.addKeyListener(new KeyAdapter() {
 				@Override
 				public void keyReleased(KeyEvent e) {
@@ -375,6 +401,8 @@ public class ServerFrame extends JFrame implements Runnable{
 	private JButton getBtnNewButton_4() {
 		if (btnNewButton_4 == null) {
 			btnNewButton_4 = new JButton("\uC804\uC1A1");
+			btnNewButton_4.setFont(new Font("배달의민족 주아", Font.BOLD, 15));
+			btnNewButton_4.setBackground(new Color(255, 102, 0));
 			btnNewButton_4.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					send();
@@ -387,7 +415,9 @@ public class ServerFrame extends JFrame implements Runnable{
 	private JLabel getLblNewLabel_3() {
 		if (lblNewLabel_3 == null) {
 			lblNewLabel_3 = new JLabel("\uBA54\uC138\uC9C0");
-			lblNewLabel_3.setFont(new Font("굴림", Font.PLAIN, 15));
+			lblNewLabel_3.setBackground(new Color(255, 102, 0));
+			lblNewLabel_3.setOpaque(true);
+			lblNewLabel_3.setFont(new Font("배달의민족 주아", Font.BOLD, 18));
 		}
 		return lblNewLabel_3;
 	}

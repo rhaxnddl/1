@@ -70,9 +70,25 @@ public class ServerThread extends Thread{
 					
 					break;
 					
+				case ChattData.WHISPER:
+					int[] to = new int[cd.getUsers().size()];
+					int index = 0; // 배열의 위치값
+					for(String str : cd.getUsers()) {
+						for(int i=0; i<frame.clients.size(); i++) {
+							ServerThread st = frame.clients.get(i);
+							if(str.equals(st.mId)) {
+								to[index] = i;
+								index++;
+							}
+						}
+					}
+					
+					frame.sendAll(cd, to);
+					break;
+					
 				case ChattData.LOGOUT:
-					throw new Exception();
-				
+					throw new Exception(); // try문을 빠져나가게 하는 문장이기 때문에 break;를 안씀
+					
 				}
 				frame.getTextPane().scrollRectToVisible(new Rectangle(0, frame.getTextPane().getHeight()+100, 1, 1));
 			}

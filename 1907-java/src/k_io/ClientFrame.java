@@ -14,6 +14,8 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -120,6 +122,9 @@ public class ClientFrame extends JFrame implements Runnable{ // ºÎ¸ð, ÀÚ½Ä°£ÀÇ °
 		}catch(Exception ex) {
 			System.out.println("ClientFrame.run()....");
 			ex.printStackTrace();
+			
+			btnNewButton.setEnabled(false);
+			btnNewButton_1.setEnabled(true);
 		}
 	}
 	
@@ -148,6 +153,7 @@ public class ClientFrame extends JFrame implements Runnable{ // ºÎ¸ð, ÀÚ½Ä°£ÀÇ °
 		ct.stop();
 		socket.close();
 		socket = null; // 3¹ø
+		
 		} catch(Exception ex) {
 			
 		}
@@ -159,6 +165,16 @@ public class ClientFrame extends JFrame implements Runnable{ // ºÎ¸ð, ÀÚ½Ä°£ÀÇ °
 			String msg = message.getText();
 			int cmd = ChattData.MESSAGE;
 			ChattData cd = new ChattData(mid, cmd, msg);
+			
+			if(comboBox.getSelectedIndex() == 1) { // ±Ó¼Ó¸»
+				Object[] obj = getList().getSelectedValues();
+				List<String> users = new ArrayList<String>();
+				for(Object str : obj) {
+					users.add((String)str);
+				}
+				cd.setUsers(users);
+				cd.setCommand(ChattData.WHISPER);
+			}
 			
 			if(socket.isConnected()) {
 				ct.oos.writeObject(cd);
@@ -246,25 +262,31 @@ public class ClientFrame extends JFrame implements Runnable{ // ºÎ¸ð, ÀÚ½Ä°£ÀÇ °
 		}
 		return tPwd;
 	}
-	private JButton getBtnNewButton() {
+	public JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("\uC811\uC18D");
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Thread t = new Thread(ClientFrame.this);
 					t.start();
+					btnNewButton.setEnabled(false);
+					btnNewButton_1.setEnabled(true);
+					
 				}
 			});
 			btnNewButton.setBounds(392, 4, 67, 27);
 		}
 		return btnNewButton;
 	}
-	private JButton getBtnNewButton_1() {
+	public JButton getBtnNewButton_1() {
 		if (btnNewButton_1 == null) {
 			btnNewButton_1 = new JButton("\uC885\uB8CC");
 			btnNewButton_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					logout();
+					
+					btnNewButton.setEnabled(true);
+					btnNewButton_1.setEnabled(false);
 				}
 			});
 			btnNewButton_1.setBounds(392, 36, 67, 27);

@@ -1,4 +1,4 @@
-// werwrrw
+
 package k_io;
 
 import java.awt.Rectangle;
@@ -31,10 +31,16 @@ public class ClientThread extends Thread{
 				ChattData cd = (ChattData)ois.readObject();
 				String html = "";
 				switch(cd.getCommand()) {
+				case ChattData.WHISPER:
 				case ChattData.MESSAGE:
-					html = "<div style='border:1px solid #0000ff;background-color:#ffff00;" 
-								+ "padding:3px;width:150px;margin-left:60px'>"
-								+ cd.toString() + "</div>";
+					if(cd.getmId().equals(frame.getTmId().getText())) {
+					html = "<div style='border:0px solid #0000ff;background-color:#ffff00;" 
+								+ "padding:5px;width:150px;margin:3px; margin-left:150px'>";
+					}else {
+						html = "<div style='border:0px solid #0000ff;background-color:#ffff00;" 
+								+ "padding:5px;width:150px;margin:3px; margin-left:0px'>";
+					}
+								html += cd.toString() + "</div>";
 					frame.kit.insertHTML(frame.doc, frame.doc.getLength(), html, 0, 0, null);
 					
 					break;
@@ -44,7 +50,7 @@ public class ClientThread extends Thread{
 						frame.model.addElement(mId);
 						// 목록이 갱신되지 않는 경우
 						//frame.getList().updateUI();
-						frame.getList().paint(frame.getList().getGraphics()); // 클라이언트 리스트가 가지고 있는 그래픽을 가지고 가서 페인트를 다시 해라 , 새롭게 다시 그려라 
+						frame.getList().ensureIndexIsVisible(frame.model.getSize()); // 클라이언트 리스트가 가지고 있는 그래픽을 가지고 가서 페인트를 다시 해라 , 새롭게 다시 그려라 
 						
 					}
 					break;
@@ -79,6 +85,9 @@ public class ClientThread extends Thread{
 				ois = null;
 				oos = null;
 				socket = null;
+				
+				frame.getBtnNewButton().setEnabled(true);
+				frame.getBtnNewButton_1().setEnabled(true);
 			} catch(Exception ex2) {
 				
 			}
