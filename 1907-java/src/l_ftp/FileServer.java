@@ -78,27 +78,36 @@ public class FileServer extends JFrame implements Runnable{
 		threadFlag = true;
 		try {
 			server = new ServerSocket(5555);
-		} catch (IOException e) {	}
+			textArea.append("서버가 시작됨\n");
+		} catch (IOException e) {
+			textArea.append(e.toString() + "\n");
+		}
 		
 		while(threadFlag) {
 			try {
 				Socket s = server.accept();
+				textArea.append("클라이언트가 접속됨\n");
 				ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
 				ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
 				Data data = (Data)ois.readObject();
 				
+				textArea.append("수신될 파일 정보\n");
+				textArea.append("파일 갯수 : " + data.fileName.size());
+				
 				for(int i=0; i<data.fileName.size(); i++) {
+					FileServer.port++;
+					if(FileServer.port>50000) FileServer.port = 6000;
+					
 					FileTransferReceive st = new FileTransferReceive(FileServer.port, data.fileName.get(i), data.fileSize.get(i));
 					files.add(st);
 					panel.add(st);
+					panel.updateUI();
 					
-					FileServer.port++;
-					if(FileServer.port>50000) FileServer.port = 6000;
 					Data sendData = new Data();
 					sendData.port = FileServer.port;
+					textArea.append(FileServer.port + "전송...\n");
 					oos.writeObject(sendData);
 				}
-				panel.updateUI();
 				ois.close();
 				oos.close();
 				

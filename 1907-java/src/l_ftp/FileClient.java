@@ -13,6 +13,11 @@ import javax.swing.JScrollPane;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.InetAddress;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
@@ -28,7 +33,7 @@ public class FileClient extends JFrame {
 	private JButton btnNewButton_1;
 	private JScrollPane scrollPane;
 	private JPanel panel_1;
-	private JTextField textField;
+	private JTextField tIp;
 	private JButton btnNewButton_2;
 
 	/**
@@ -60,6 +65,13 @@ public class FileClient extends JFrame {
 		setContentPane(contentPane);
 		contentPane.add(getPanel(), BorderLayout.NORTH);
 		contentPane.add(getScrollPane(), BorderLayout.CENTER);
+		
+		try {
+			InetAddress addr = InetAddress.getLocalHost();
+			getTIp().setText(addr.getHostAddress());
+		}catch(Exception ex) {
+			
+		}
 		}
 
 	public void fileChooser() { // 파일 선택
@@ -79,21 +91,45 @@ public class FileClient extends JFrame {
 	}
 	
 	public void send() { // 전송
+		// 전송할 파일의 목록과 파일의 크기를 Data에 담아서 서버 전달
+		Data data = new Data();
+		ObjectInputStream ois = null;
+		ObjectOutputStream oos = null;
+		Socket socket = null;
 		for(FileTransfer ft : files) {
+			File f = new File(ft.getFileName().getText());
+			
+			data.fileName.add(f.getName());
+			data.fileSize.add(ft.fileSize);
+		}
+		try {
+			socket = new Socket(tIp.getText(), 5555);
+			ois = new ObjectInputStream(socket.getInputStream());
+			oos = new ObjectOutputStream(socket.getOutputStream());
+			oos.writeObject(data);
+			oos.flush();
+		} catch (IOException e) {
+//			e.printStackTrace();
+		}
+		// 서버가 전달한 port번호를 사용하여 서버에 추가 접속
+		try {
+		for(FileTransfer ft : files) {
+			Data temp = (Data)ois.readObject();	
+			ft.ip = getTIp().getText();
+			ft.port = temp.port;
 			Thread t = new Thread(ft);
-			try {
 			t.join();
 			t.start();
-			}catch(Exception ex) {
-				ex.printStackTrace();
-			}
-		}
+		 }
+		}catch(Exception ex) {
+			ex.printStackTrace();
+	  }
 	}
 
 	private JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
-			panel.add(getTextField());
+			panel.add(getTIp());
 			panel.add(getBtnNewButton_2());
 			panel.add(getBtnNewButton());
 			panel.add(getBtnNewButton_1());
@@ -137,16 +173,21 @@ public class FileClient extends JFrame {
 		}
 		return panel_1;
 	}
-	private JTextField getTextField() {
-		if (textField == null) {
-			textField = new JTextField();
-			textField.setColumns(10);
+	private JTextField getTIp() {
+		if (tIp == null) {
+			tIp = new JTextField();
+			tIp.setColumns(10);
 		}
-		return textField;
+		return tIp;
 	}
 	private JButton getBtnNewButton_2() {
 		if (btnNewButton_2 == null) {
 			btnNewButton_2 = new JButton("\uC11C\uBC84 \uC5F0\uACB0");
+			btnNewButton_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) { // 서버 연결
+					
+				}
+			});
 		}
 		return btnNewButton_2;
 	}

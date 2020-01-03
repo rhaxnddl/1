@@ -9,10 +9,14 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.OutputStream;
+import java.net.Socket;
 import java.awt.Color;
 
 public class FileTransfer extends JPanel implements Runnable{
 	long fileSize;
+	String ip;
+	int port; // 파일 전송을 하기 위한 port
 	
 	private JLabel fileName;
 	private JProgressBar progressBar;
@@ -44,22 +48,28 @@ public class FileTransfer extends JPanel implements Runnable{
 	public void run() {
 		// 지정된 파일을 FileInputString으로 읽어서
 	   // Socket의 DataOutoutStream으로 전송
-		byte[] readData = new byte[4096]; // 4키로 바이트
+		byte[] readData = new byte[4096]; // 4kb (4키로 바이트)
 		int readSize = 0;
 		long readTotSize = 0;
+		getProgressBar().setValue(0);
 		try {
+		Socket socket = new Socket(ip, port);
+		OutputStream os = socket.getOutputStream();
+		
 		FileInputStream fis = new FileInputStream(getFileName().getText());
 		while((readSize = fis.read(readData)) != -1) {
-			readTotSize = readSize;
+			readTotSize += readSize;
 			getStatus().setText(readTotSize + "/" + fileSize);
 			getProgressBar().setValue((int)((double)readTotSize/fileSize*100));
+			os.write(readData, 0, readSize);
 		 }
+		os.flush();
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
 	}
 	
-	private JLabel getFileName() {
+	JLabel getFileName() {
 		if (fileName == null) {
 			fileName = new JLabel("\uD30C\uC77C\uBA85 \uD45C\uC2DC");
 			fileName.setBounds(12, 10, 364, 15);

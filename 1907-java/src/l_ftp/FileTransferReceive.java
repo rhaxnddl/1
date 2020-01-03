@@ -49,8 +49,6 @@ public class FileTransferReceive extends JPanel implements Runnable{
 		getStatus().setText("0/" + fileSize);
 		
 		try {
-			ServerSocket ss = new ServerSocket(port);
-			socket = ss.accept();
 			Thread t = new Thread(this);
 			t.start();
 		}catch(Exception ex) {
@@ -66,8 +64,14 @@ public class FileTransferReceive extends JPanel implements Runnable{
 		byte[] readData = new byte[4096]; // 4키로 바이트
 		int readSize = 0;
 		long readTotSize = 0;
+		getProgressBar().setValue(0);
 		try {
-		FileOutputStream fos = new FileOutputStream(getFileName().getText());
+		ServerSocket ss = new ServerSocket(port);
+		socket = ss.accept();
+		File dir = new File("c:/Temp");
+		if(!dir.exists()) dir.mkdir();
+			
+		fos = new FileOutputStream("c:/Temp/" + getFileName().getText());
 		is = socket.getInputStream();
 		while((readSize = is.read(readData)) != -1) {
 			readTotSize += readSize;
